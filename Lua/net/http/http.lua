@@ -5,6 +5,7 @@ local HTTPMethods = CS.BestHTTP.HTTPMethods
 local HTTPRequestStates = CS.BestHTTP.HTTPRequestStates
 local Uri = CS.System.Uri
 local TimeSpan = CS.System.TimeSpan
+local Utils = CS.Utils
 
 local M = {}
 
@@ -36,8 +37,8 @@ local HttpMethod = {
 local function createRequest(data)
     local req = HTTPRequest(Uri(data.url))
     req.MethodType = HttpMethod[data.method]
-    req.Timeout = TimeSpan.FromSeconds(5)
-    req.ConnectTimeout = TimeSpan.FromSeconds(5)
+    req.Timeout = TimeSpan.FromSeconds(15)
+    req.ConnectTimeout = TimeSpan.FromSeconds(15)
     req.DisableCache = true
     if data.headers then
         for field, value in pairs(data.headers) do
@@ -46,7 +47,7 @@ local function createRequest(data)
     end
     if data.postData then
         local jstr = json.encode(data.postData)
-        req.RawData = Common.GetBytesUTF8(jstr)
+        req.RawData = Utils.UTF8GetBytes(jstr)
     end
     req.Callback = function(request, response)
         data.callback(request, response)

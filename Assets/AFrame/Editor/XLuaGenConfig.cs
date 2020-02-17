@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System;
+using System.Text;
 using UnityEngine;
 using XLua;
 //using System.Reflection;
