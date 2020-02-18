@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/source/rapidjson.cpp \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-5.3.5/src/lua.hpp \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-5.3.5/src/lua.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/build_osx/luaconf.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-5.3.5/src/lualib.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-5.3.5/src/lauxlib.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/i64lib.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/document.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/reader.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/allocators.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/rapidjson.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/stream.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/encodings.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/meta.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/../rapidjson.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/stack.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/../allocators.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/swap.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/strtod.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/ieee754.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/biginteger.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/diyfp.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/pow10.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/error/error.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/error/../rapidjson.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/strfunc.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/../stream.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/encodedstream.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/error/en.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/filereadstream.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/filewritestream.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/stringbuffer.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/writer.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/dtoa.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/internal/itoa.h \
+  /Users/mio/Downloads/build_xlua_with_libs-master/build/lua-rapidjson/include/rapidjson/prettywriter.h

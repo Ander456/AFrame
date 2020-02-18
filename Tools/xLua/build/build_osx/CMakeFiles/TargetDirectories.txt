@@ -1,0 +1,3 @@
+/Users/mio/Downloads/build_xlua_with_libs-master/build/build_osx/CMakeFiles/xlua.dir
+/Users/mio/Downloads/build_xlua_with_libs-master/build/build_osx/CMakeFiles/ALL_BUILD.dir
+/Users/mio/Downloads/build_xlua_with_libs-master/build/build_osx/CMakeFiles/ZERO_CHECK.dir

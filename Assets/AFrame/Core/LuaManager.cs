@@ -48,6 +48,7 @@ public class LuaManager
     { 
 		luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
 		luaEnv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
+		luaEnv.AddBuildin("xsocket", XLua.LuaDLL.Lua.LoadXSocket);
         luaEnv.DoString("require 'main'");
         if (cb != null)
         {
