@@ -17,7 +17,7 @@ print("lua main")
 local socket = require("xsocket")
 
 local pb = require "pb"
-local protoc = require("net.protoc")
+local protoc = require("net.luaprotobuf.protoc")
 -- load schema from text (just for demo, use protoc.new() in real world)
 assert(protoc:load [[
    message Phone {
