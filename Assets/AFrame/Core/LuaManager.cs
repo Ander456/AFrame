@@ -46,6 +46,8 @@ public class LuaManager
 
     public static void OnInited(Action cb)
     { 
+		luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
+		luaEnv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
         luaEnv.DoString("require 'main'");
         if (cb != null)
         {

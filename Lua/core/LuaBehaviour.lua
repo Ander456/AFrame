@@ -17,21 +17,21 @@ function LuaBehaviour.UnRegister()
 end
 
 function LuaBehaviour.Update()
-    for key, behaviour in pairs(self.list) do
-        behaviour:Update()
-    end
+    -- for key, behaviour in pairs(self.list) do
+    --     behaviour:Update()
+    -- end
 end
 
 function LuaBehaviour.LateUpdate()
-    for key, behaviour in pairs(self.list) do
-        behaviour:Update()
-    end
+    -- for key, behaviour in pairs(self.list) do
+    --     behaviour:Update()
+    -- end
 end
 
 function LuaBehaviour.FixedUpdate()
-    for key, behaviour in pairs(self.list) do
-        behaviour:Update()
-    end
+    -- for key, behaviour in pairs(self.list) do
+    --     behaviour:Update()
+    -- end
 end
 
 return LuaBehaviour

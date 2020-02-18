@@ -1,5 +1,5 @@
 require("core.init")
-require("net.http.init")
+require("net.init")
 
 function Update()
     LuaBehaviour.Update()
@@ -14,4 +14,9 @@ function FixedUpdate()
 end
 
 print("lua main")
+
+print(json)
+print(require("socket"))
+print(pb)
+
 
