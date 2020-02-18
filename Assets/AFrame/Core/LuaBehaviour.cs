@@ -17,6 +17,7 @@ public class LuaBehaviour : MonoBehaviour
 	private LuaFunction luaOnEnable;
 	private LuaFunction luaOnDisable;
 	private LuaFunction luaFixedUpdate;
+	private LuaFunction luaLateUpdate;
 
 	public void Init(LuaTable table)
 	{
@@ -30,6 +31,7 @@ public class LuaBehaviour : MonoBehaviour
 		luaOnEnable = luaTable.Get<LuaFunction>("OnEnable"); 
 		luaOnDisable = luaTable.Get<LuaFunction>("OnDisable"); 
 		luaFixedUpdate = luaTable.Get<LuaFunction>("FixedUpdate"); 
+		luaLateUpdate = luaTable.Get<LuaFunction>("LateUpdate"); 
 
 		CallAwake();
 	}
@@ -64,6 +66,7 @@ public class LuaBehaviour : MonoBehaviour
 		SafeDispose(ref luaOnEnable);
 		SafeDispose(ref luaOnDisable);
 		SafeDispose(ref luaFixedUpdate);
+		SafeDispose(ref luaLateUpdate);
 
 		if (luaTable != null) 
 			luaTable.Dispose();
@@ -85,6 +88,12 @@ public class LuaBehaviour : MonoBehaviour
 	{
 		if (luaFixedUpdate != null)
 			luaFixedUpdate.Call ();
+	}
+
+	void LateUpdate()
+	{
+		if (luaLateUpdate != null)
+			luaLateUpdate.Call ();
 	}
 
 	void SafeDispose(ref LuaFunction func)

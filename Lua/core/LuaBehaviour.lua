@@ -1,37 +1,35 @@
-local LuaBehaviour = {}
+local LuaBehaviour = class("LuaBehaviour")
 
-function LuaBehaviour.Init()
-    self.list = {}
-end
-
-function LuaBehaviour.Destroy()
-    self.list = {}
-end
-
-function LuaBehaviour.Register()
-    
-end
-
-function LuaBehaviour.UnRegister()
+function LuaBehaviour:Awake()
     -- body
 end
 
-function LuaBehaviour.Update()
-    -- for key, behaviour in pairs(self.list) do
-    --     behaviour:Update()
-    -- end
+function LuaBehaviour:Start()
+    -- body
 end
 
-function LuaBehaviour.LateUpdate()
-    -- for key, behaviour in pairs(self.list) do
-    --     behaviour:Update()
-    -- end
+function LuaBehaviour:Update()
+    -- body
 end
 
-function LuaBehaviour.FixedUpdate()
-    -- for key, behaviour in pairs(self.list) do
-    --     behaviour:Update()
-    -- end
+function LuaBehaviour:LateUpdate()
+    -- body
+end
+
+function LuaBehaviour:FixedUpdate()
+    -- body
+end
+
+function LuaBehaviour:OnEnable()
+    -- body
+end
+
+function LuaBehaviour:OnDisable()
+    -- body
+end
+
+function LuaBehaviour:OnDestroy()
+    -- body
 end
 
 return LuaBehaviour
