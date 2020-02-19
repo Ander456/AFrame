@@ -39,25 +39,25 @@ public class LuaBehaviour : MonoBehaviour
 	void CallAwake()
 	{
 		if (luaAwake != null) 
-			luaAwake.Call(luaTable, gameObject);
+			luaAwake.Call(luaTable);
 	}
 
 	void Start()
 	{
 		if (luaStart != null) 
-			luaStart.Call(luaTable, gameObject);
+			luaStart.Call(luaTable);
 	}
 	
 	void Update()
 	{
 		if (luaUpdate != null) 
-			luaUpdate.Call();
+			luaUpdate.Call(luaTable);
 	}
 
 	void OnDestroy()
 	{
 		if (luaOnDestroy != null) 
-			luaOnDestroy.Call();
+			luaOnDestroy.Call(luaTable);
 
 		SafeDispose(ref luaOnDestroy);
 		SafeDispose(ref luaOnDestroy);
@@ -75,25 +75,25 @@ public class LuaBehaviour : MonoBehaviour
 	void OnEnable()
 	{
 		if (luaOnEnable != null)
-			luaOnEnable.Call ();
+			luaOnEnable.Call(luaTable);
 	}
 
 	void OnDisable()
 	{
 		if (luaOnDisable != null)
-			luaOnDisable.Call ();
+			luaOnDisable.Call(luaTable);
 	}
 
 	void FixedUpdate()
 	{
 		if (luaFixedUpdate != null)
-			luaFixedUpdate.Call ();
+			luaFixedUpdate.Call(luaTable);
 	}
 
 	void LateUpdate()
 	{
 		if (luaLateUpdate != null)
-			luaLateUpdate.Call ();
+			luaLateUpdate.Call(luaTable);
 	}
 
 	void SafeDispose(ref LuaFunction func)

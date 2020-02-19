@@ -93,7 +93,7 @@ namespace XAsset.Editor
                 _startLine -= DisplayLineNum;
             }
 
-            _startLine = (int) GUILayout.HorizontalSlider(_startLine, 0, _lineIndex.Count - DisplayLineNum - 1);
+            _startLine = (int)GUILayout.HorizontalSlider(_startLine, 0, _lineIndex.Count - DisplayLineNum - 1);
             if (GUILayout.Button(">>", EditorStyles.label, GUILayout.MaxWidth(40)))
             {
                 _startLine += DisplayLineNum;

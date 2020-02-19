@@ -109,7 +109,7 @@ namespace XAsset
                         {
                             // ReSharper disable once AssignNullToNotNullAttribute
                             Directory.CreateDirectory(dir);
-                        } 
+                        }
                         fs = new FileStream(savePath, FileMode.OpenOrCreate, FileAccess.Write);
                         len = fs.Length;
                         var emptyVersion = string.IsNullOrEmpty(version);
@@ -117,19 +117,19 @@ namespace XAsset
                         var emptyOldVersion = string.IsNullOrEmpty(oldVersion);
                         if (emptyVersion || emptyOldVersion || !oldVersion.Equals(version))
                         {
-                            Versions.Set(savePath, version); 
-                            len = 0; 
+                            Versions.Set(savePath, version);
+                            len = 0;
                         }
                         if (len < maxlen)
-                        { 
+                        {
                             fs.Seek(len, SeekOrigin.Begin);
                             request = UnityWebRequest.Get(url);
                             request.SetRequestHeader("Range", "bytes=" + len + "-");
-                            #if UNITY_2017_1_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                             request.SendWebRequest();
-                            #else
+#else
                             request.Send();
-                            #endif
+#endif
                             index = 0;
                             state = State.BodyRequest;
                         }
@@ -181,11 +181,11 @@ namespace XAsset
         public void Start()
         {
             request = UnityWebRequest.Head(url);
-            #if UNITY_2017_1_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             request.SendWebRequest();
-            #else
+#else
             request.Send();
-            #endif
+#endif
             progress = 0;
             isDone = false;
         }

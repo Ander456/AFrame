@@ -1,7 +1,6 @@
-local M = class("View")
+local M = class("View", LuaBehaviour)
 
 function M:ctor()
-    ViewManager.Add(self)
 end
 
 function M:Find(path)
@@ -14,6 +13,10 @@ function M:Find(path)
     return trans
 end
 
+function M:Update()
+    self.transform:Rotate(UE.Vector3.up*3);
+end
+
 function M:Load(assetPath)
     self.asset = Assets.LoadAsync(assetPath, typeof(GameObject))
     self.asset.completed = function(a) 
@@ -21,18 +24,11 @@ function M:Load(assetPath)
             local prefab = a.asset
             local go  = GameObject.Instantiate(prefab)  
             go.name = prefab.name   
-            self.gameObject = go 
-            self.luaBehaviour = self.gameObject:AddComponent(typeof(CS.LuaBehaviour))
-            self.transform = self.gameObject.transform
+            local t = LuaManager.AddLuaComponent(go, M)
             if self.onloaded then
                 self.onloaded(self)
             end
             self:OnLoaded() 
-            if ViewManager.rootView == nil then
-                ViewManager.rootView = self
-            else
-                self:SetParent(ViewManager.rootView.canvasRoot)
-            end
             self.loaded = true 
         end
     end 

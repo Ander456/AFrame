@@ -171,7 +171,7 @@ namespace XAsset
         }
 
         // ReSharper disable once InconsistentNaming
-        public event Action<Asset> completed;
+        public Action<Asset> completed;
 
         #region IEnumerator implementation
 
@@ -531,7 +531,7 @@ namespace XAsset
                         else
                         {
                             asset = _www.texture;
-                        } 
+                        }
 #endif
                         loadState = LoadState.Loaded;
                         return true;
@@ -553,7 +553,7 @@ namespace XAsset
 #if UNITY_2018_3_OR_NEWER
             get { return _www.downloadProgress; }
 #else
-            get { return _www.progress;}
+            get { return _www.progress; }
 #endif
         }
 

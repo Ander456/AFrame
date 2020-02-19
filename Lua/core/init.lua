@@ -1,7 +1,6 @@
 UE = CS.UnityEngine
-UI = UE.UI
 GameObject = UE.GameObject
-Assets = CS.Assets
+Assets = CS.XAsset.Assets
 LuaManager = CS.LuaManager
 
 require("core.functions")

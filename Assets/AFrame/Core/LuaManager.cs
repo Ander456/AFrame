@@ -99,22 +99,22 @@ public class LuaManager
 
 	public static LuaTable AddLuaComponent(GameObject go, LuaTable luaClass)
 	{
-		LuaFunction luaCtor = luaClass.Get<LuaFunction>("ctor");
+		LuaFunction luaCtor = luaClass.Get<LuaFunction>("new");
 		if (null != luaCtor)
 		{
-			object[] rets = luaCtor.Call(luaClass);
+			LuaBehaviour comp = go.AddComponent<LuaBehaviour>();
+			object[] rets = luaCtor.Call(luaClass, comp);
 			if (1 != rets.Length)
 			{
 				return null;
 			}
-			LuaBehaviour comp = go.AddComponent<LuaBehaviour>();
 			LuaTable instance = rets[0] as LuaTable;
 			comp.Init(instance);
 			return instance;
 		}
 		else
 		{
-			throw new Exception("Lua function .ctor not found");
+			throw new Exception("Lua function __new not found");
 		}
 	}
 

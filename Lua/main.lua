@@ -91,3 +91,26 @@ print("lua main")
 -- -- m:mansay()
 -- spm:say()
 -- spm:suerpmansay()
+
+--- test luabehaviour
+-- local asset = Assets.LoadAsync("Assets/Prefabs/Cube.prefab", typeof(GameObject))
+-- asset.completed = function(a) 
+--     local prefab = a.asset
+--     local go  = GameObject.Instantiate(prefab)  
+--     go.name = prefab.name   
+--     local ins = LuaManager.AddLuaComponent(go, LuaBehaviour)
+--     ins:StartCoroutine(function()
+--         coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
+--         GameObject.Destroy(ins.gameObject)
+--     end)
+--     ins:StartCoroutine(function()
+--         print('coroutine a started')
+--         while true do
+--             coroutine.yield(CS.UnityEngine.WaitForSeconds(1))
+--             print('i am coroutine a')
+--         end
+--     end)
+-- end
+
+--- test view
+require("base.view"):Load("Assets/Prefabs/Cube.prefab")

@@ -47,7 +47,7 @@ namespace XAsset.Editor
         private static void OnInitialize()
         {
             EditorUtility.ClearProgressBar();
-            var settings = BuildScript.GetSettings(); 
+            var settings = BuildScript.GetSettings();
             if (settings.localServer)
             {
                 bool isRunning = LaunchLocalServer.IsRunning();
@@ -55,7 +55,14 @@ namespace XAsset.Editor
                 {
                     LaunchLocalServer.Run();
                 }
-				Utility.dataPath = string.Empty;
+                Utility.dataPath = string.Empty;
+                var manifest = BuildScript.GetManifest();
+                if (string.IsNullOrEmpty(manifest.downloadURL))
+                {
+                    manifest.downloadURL = "http://127.0.0.1:7888/";
+                    EditorUtility.SetDirty(manifest);
+                    AssetDatabase.SaveAssets();
+                }
             }
             else
             {
@@ -64,8 +71,8 @@ namespace XAsset.Editor
                 {
                     LaunchLocalServer.KillRunningAssetBundleServer();
                 }
-				Utility.dataPath = System.Environment.CurrentDirectory; 	
-            } 
+                Utility.dataPath = System.Environment.CurrentDirectory;
+            }
             Utility.downloadURL = BuildScript.GetManifest().downloadURL;
             Utility.assetBundleMode = settings.runtimeMode;
             Utility.getPlatformDelegate = BuildScript.GetPlatformName;
@@ -74,7 +81,7 @@ namespace XAsset.Editor
 
         public static string TrimedAssetBundleName(string assetBundleName)
         {
-            if(string.IsNullOrEmpty(assetRootPath))
+            if (string.IsNullOrEmpty(assetRootPath))
                 return assetBundleName;
             return assetBundleName.Replace(assetRootPath, "");
         }
@@ -90,7 +97,7 @@ namespace XAsset.Editor
         private static void MarkAssetsWithDir()
         {
             var settings = BuildScript.GetSettings();
-            assetRootPath = settings.assetRootPath; 
+            assetRootPath = settings.assetRootPath;
             var assetsManifest = BuildScript.GetManifest();
             var assets = Selection.GetFiltered<Object>(SelectionMode.DeepAssets);
             for (var i = 0; i < assets.Length; i++)
@@ -113,7 +120,7 @@ namespace XAsset.Editor
         private static void MarkAssetsWithFile()
         {
             var settings = BuildScript.GetSettings();
-            assetRootPath = settings.assetRootPath; 
+            assetRootPath = settings.assetRootPath;
             var assetsManifest = BuildScript.GetManifest();
             var assets = Selection.GetFiltered<Object>(SelectionMode.DeepAssets);
             for (var i = 0; i < assets.Length; i++)
@@ -145,7 +152,7 @@ namespace XAsset.Editor
         private static void MarkAssetsWithName()
         {
             var settings = BuildScript.GetSettings();
-            assetRootPath = settings.assetRootPath; 
+            assetRootPath = settings.assetRootPath;
             var assets = Selection.GetFiltered<Object>(SelectionMode.DeepAssets);
             var assetsManifest = BuildScript.GetManifest();
             for (var i = 0; i < assets.Length; i++)

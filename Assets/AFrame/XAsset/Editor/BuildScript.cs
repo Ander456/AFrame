@@ -184,11 +184,11 @@ namespace XAsset.Editor
         }
 
         public static void SetAssetBundleNameAndVariant(string assetPath, string bundleName, string variant)
-        { 
+        {
             var importer = AssetImporter.GetAtPath(assetPath);
-            if(importer == null) return;
+            if (importer == null) return;
             importer.assetBundleName = bundleName;
-            importer.assetBundleVariant = variant; 
+            importer.assetBundleVariant = variant;
         }
 
         public static void BuildManifest()
@@ -199,20 +199,20 @@ namespace XAsset.Editor
             var bundles = AssetDatabase.GetAllAssetBundleNames();
 
             List<string> dirs = new List<string>();
-            List<AssetData> assets = new List<AssetData>();  
+            List<AssetData> assets = new List<AssetData>();
 
             for (int i = 0; i < bundles.Length; i++)
             {
                 var paths = AssetDatabase.GetAssetPathsFromAssetBundle(bundles[i]);
-                foreach(var path in paths) 
+                foreach (var path in paths)
                 {
                     var dir = Path.GetDirectoryName(path);
-                    var index = dirs.FindIndex((o)=>o.Equals(dir));
-                    if(index == -1) 
+                    var index = dirs.FindIndex((o) => o.Equals(dir));
+                    if (index == -1)
                     {
                         index = dirs.Count;
                         dirs.Add(dir);
-                    }  
+                    }
 
                     var asset = new AssetData();
                     asset.bundle = i;
@@ -322,10 +322,10 @@ namespace XAsset.Editor
                     return "/" + name + ".app";
 
 #else
-                    case BuildTarget.StandaloneOSXIntel:
-                    case BuildTarget.StandaloneOSXIntel64:
-                    case BuildTarget.StandaloneOSXUniversal:
-                                        return "/" + name + ".app";
+                case BuildTarget.StandaloneOSXIntel:
+                case BuildTarget.StandaloneOSXIntel64:
+                case BuildTarget.StandaloneOSXUniversal:
+                    return "/" + name + ".app";
 
 #endif
 

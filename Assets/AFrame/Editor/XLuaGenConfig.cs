@@ -50,9 +50,16 @@ public static class XLuaGenConfig
 		typeof(System.Collections.Generic.List<int>),
 		typeof(Action<string>),
 		typeof(UnityEngine.Debug),
+		typeof(Camera),
 
 		// xAsset
 		typeof(XAsset.Assets),
+		typeof(XAsset.Asset),
+		typeof(XAsset.BundleAsset),
+		typeof(XAsset.BundleAssetAsync),
+		typeof(XAsset.SceneAsset),
+		typeof(XAsset.SceneAssetAsync),
+		typeof(XAsset.WebAsset),
 
 		// BestHttp
 		typeof(BestHTTP.HTTPManager),

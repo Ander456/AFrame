@@ -39,7 +39,7 @@ namespace XAsset
 
     public class AssetsManifest : ScriptableObject
     {
-        public string downloadURL = "";
+		public string downloadURL = "http://127.0.0.1:7888/";
         public string[] activeVariants = new string[0];
         [HideInInspector]public string[] bundles = new string[0];
         [HideInInspector]public string[] dirs = new string[0];
