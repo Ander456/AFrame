@@ -12,6 +12,10 @@ end
 
 print("lua main")
 
+-- --- test rapidjson
+-- local t = {a=1,b=2,c="33"}
+-- print(json.encode(t))
+
 -- --- test http
 -- http.go(function()
 --     local req, resp = http({method = "GET", url = "https://www.weibo.com"})
