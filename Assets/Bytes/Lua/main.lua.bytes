@@ -116,10 +116,6 @@ print("lua main")
 --     end)
 -- end
 
--- --- test view
--- UIManager = require("base.UIManager").new()
--- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
-
 -- --- test res load
 -- Res.Load("Assets/Textures/log.png", typeof(UE.Texture2D), function(a)
 --     print(a.asset)
@@ -136,3 +132,9 @@ print("lua main")
 --         render.sprite = sp
 --     end)
 -- end)
+
+-- --- test view
+UIManager = require("base.UIManager").new()
+UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
+
+
