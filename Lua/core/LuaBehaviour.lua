@@ -9,7 +9,7 @@ local LuaBehaviour = class("LuaBehaviour")
 local util = require 'core.util'
 
 function LuaBehaviour:ctor(...)
-    local _, comp = ...
+    local comp = ...
     self.cscomp = comp
     self.gameObject = comp.gameObject
     self.transform = comp.transform

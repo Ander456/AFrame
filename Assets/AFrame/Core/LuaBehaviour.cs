@@ -70,8 +70,7 @@ public class LuaBehaviour : MonoBehaviour
 		luaFixedUpdate = null;
 		luaLateUpdate = null;
 
-		if (luaTable != null) 
-			luaTable.Dispose();
+		luaTable.Dispose();
 	}
 
 	void OnEnable()

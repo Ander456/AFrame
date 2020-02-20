@@ -175,7 +175,7 @@ function class(classname, super)
             if cls.super then
                 create(cls.super, ...)
             end
-            if cls.ctor then
+            if rawget(cls, "ctor") then
                 cls.ctor(self, ...)
             end
         end

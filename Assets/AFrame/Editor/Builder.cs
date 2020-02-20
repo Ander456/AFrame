@@ -107,7 +107,7 @@ public class Builder
 
     private static void MarkPrefabs()
     {
-        var path = "Assets/Framework/Prefabs";
+        var path = "Assets/Prefabs";
         var searchPattern = "*.prefab";
         MarkAssetsByRelativeDirWith(path, searchPattern);
     }

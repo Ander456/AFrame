@@ -1,0 +1,17 @@
+assets/scenes/main:ab96573b82da9f3a6af87f33d9183083
+assets/textures/log:43f1840c0ded3e254906ffc5cc0aff2a
+assets/textures/log1:1865a3647d4d4afecdfdf16c6956da3d
+assets/textures/log2:29ac252ee4d7a7621d13ca6a611a6631
+assets/textures/log3:11fe348fab3c174c8edbdcdb20591980
+assets/textures/log4:23f760d0cae6041c38f15ea3b659231b
+assets/textures/log5:6b6d62498e655e497ef346004c008338
+lua/base_g:0b0329a56b3bda28cb10dac2f7095592
+lua/core_g:e5cc38ed0444161c19124b8a8ae4e680
+lua/net/http_g:fdc4dca34c9f550ddbf968f474fab7ec
+lua/net/luaprotobuf_g:d6fa002f64a45fe43794f59802e29307
+lua/net/tcp_g:935c02e681c3ed2acedc87d867a2955c
+lua/net_g:f442e0157911389bd71eddffff8dce1d
+lua_g:ea2be73e592545828d74f86f626b63b1
+manifest:7a006edea157ef5d4a5c94ed579dda57
+prefabs/cube:92011f8c62e2d3bd82ce8f626a6e5dba
+prefabs/logo:4f234e1cfd8ddafcd95dc40bdd7ec7a9

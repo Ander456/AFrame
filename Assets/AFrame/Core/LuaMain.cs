@@ -50,7 +50,5 @@ public class LuaMain : MonoBehaviour
 		_updateFunc = null;
 		_lateUpdateFunc = null;
 		_fixedUpdateFunc = null;
-
-		LuaManager.Dispose();
 	}
 }

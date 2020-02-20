@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 97489484
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b6d62498e655e497ef346004c008338
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Textures/log5.png
+Dependencies: []

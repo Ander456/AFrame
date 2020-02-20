@@ -9,6 +9,7 @@ public class LuaManager
 {
 	public static LuaEnv luaEnv = new LuaEnv();
     private static Dictionary<string, Asset> assets = new Dictionary<string, Asset>();
+	private delegate LuaTable LuaCtor(LuaBehaviour comp);
 
     public static void Init(Action succes)
     {
@@ -94,22 +95,18 @@ public class LuaManager
 
 	public static LuaTable AddLuaComponent(GameObject go, LuaTable luaClass)
 	{
-		LuaFunction luaCtor = luaClass.Get<LuaFunction>("new");
-		if (null != luaCtor)
+		LuaCtor ctor;
+		luaClass.Get("new", out ctor);
+		if (ctor != null) 
 		{
 			LuaBehaviour comp = go.AddComponent<LuaBehaviour>();
-			object[] rets = luaCtor.Call(luaClass, comp);
-			if (1 != rets.Length)
-			{
-				return null;
-			}
-			LuaTable instance = rets[0] as LuaTable;
+			LuaTable instance = ctor(comp);
 			comp.Init(instance);
 			return instance;
 		}
 		else
 		{
-			throw new Exception("Lua function __new not found");
+			throw new Exception("Lua function new not found");
 		}
 	}
 

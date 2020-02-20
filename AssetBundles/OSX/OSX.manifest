@@ -1,0 +1,55 @@
+ManifestFileVersion: 0
+CRC: 1147206388
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: assets/textures/log
+      Dependencies: {}
+    Info_1:
+      Name: assets/textures/log1
+      Dependencies: {}
+    Info_2:
+      Name: assets/scenes/main
+      Dependencies: {}
+    Info_3:
+      Name: assets/textures/log2
+      Dependencies: {}
+    Info_4:
+      Name: assets/textures/log3
+      Dependencies: {}
+    Info_5:
+      Name: assets/textures/log5
+      Dependencies: {}
+    Info_6:
+      Name: assets/textures/log4
+      Dependencies: {}
+    Info_7:
+      Name: lua_g
+      Dependencies: {}
+    Info_8:
+      Name: lua/base_g
+      Dependencies: {}
+    Info_9:
+      Name: lua/core_g
+      Dependencies: {}
+    Info_10:
+      Name: lua/net_g
+      Dependencies: {}
+    Info_11:
+      Name: lua/net/http_g
+      Dependencies: {}
+    Info_12:
+      Name: lua/net/luaprotobuf_g
+      Dependencies: {}
+    Info_13:
+      Name: lua/net/tcp_g
+      Dependencies: {}
+    Info_14:
+      Name: prefabs/cube
+      Dependencies: {}
+    Info_15:
+      Name: prefabs/logo
+      Dependencies: {}
+    Info_16:
+      Name: manifest
+      Dependencies: {}

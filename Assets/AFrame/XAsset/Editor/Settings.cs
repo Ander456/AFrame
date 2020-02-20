@@ -34,6 +34,6 @@ namespace XAsset.Editor
     {
 		public bool runtimeMode = false;
         public bool localServer = false;
-        public string assetRootPath = "Assets/Plugins/XAsset/Demo/";
+        public string assetRootPath = "Assets/XAsset/Demo/";
     }
 }

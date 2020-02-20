@@ -169,15 +169,19 @@ function class(classname, super)
         setmetatable(cls, {__index = super})
         cls.super = super
     end
-    if not cls.ctor then
-        cls.ctor = function() end
-    end
     cls.new = function(...)
-        local instance = {}
-        setmetatable(instance, cls)
-        instance.class = cls
-        instance:ctor(...)
-        return instance
+        local self = setmetatable({}, cls)
+        local function create(cls, ...)
+            if cls.super then
+                create(cls.super, ...)
+            end
+            if rawget(cls, "ctor") then
+                cls.ctor(self, ...)
+            end
+        end
+        create(cls, ...)
+        self.class = cls
+        return self
     end
     return cls
 end
