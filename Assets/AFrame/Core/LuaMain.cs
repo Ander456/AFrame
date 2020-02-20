@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using System;
 using XLua;
 
 public class LuaMain : MonoBehaviour
 {
-	LuaFunction _updateFunc = null;
-	LuaFunction _lateUpdateFunc = null;
-	LuaFunction _fixedUpdateFunc = null;
+	Action _updateFunc = null;
+	Action _lateUpdateFunc = null;
+	Action _fixedUpdateFunc = null;
 
 	void Start()
 	{
@@ -15,16 +16,16 @@ public class LuaMain : MonoBehaviour
 
 	private void OnInited()
 	{
-		_updateFunc = LuaManager.GetFunc<LuaFunction>("Update");
-		_lateUpdateFunc = LuaManager.GetFunc<LuaFunction>("LateUpdate");
-		_fixedUpdateFunc = LuaManager.GetFunc<LuaFunction>("FixedUpdate");
+		LuaManager.luaEnv.Global.Get("Update", out _updateFunc);
+		LuaManager.luaEnv.Global.Get("LateUpdate", out _lateUpdateFunc);
+		LuaManager.luaEnv.Global.Get("FixedUpdate", out _fixedUpdateFunc);
 	}
 
 	private void Update()
 	{
 		if (_updateFunc != null)
 		{
-			_updateFunc.Call();
+			_updateFunc();
 		}
 	}
 
@@ -32,7 +33,7 @@ public class LuaMain : MonoBehaviour
 	{
 		if (_fixedUpdateFunc != null)
 		{
-			_fixedUpdateFunc.Call();
+			_fixedUpdateFunc();
 		}
 	}
 
@@ -40,24 +41,15 @@ public class LuaMain : MonoBehaviour
 	{
 		if (_lateUpdateFunc != null)
 		{
-			_lateUpdateFunc.Call();
+			_lateUpdateFunc();
 		}
 	}
 		
-	private void SafeDispose(ref LuaFunction func)
-	{
-		if (func != null)
-		{
-			func.Dispose();
-			func = null;
-		}
-	}
-
 	private void OnDestroy()
 	{
-		SafeDispose(ref _updateFunc);
-		SafeDispose(ref _lateUpdateFunc);
-		SafeDispose(ref _fixedUpdateFunc);
+		_updateFunc = null;
+		_lateUpdateFunc = null;
+		_fixedUpdateFunc = null;
 
 		LuaManager.Dispose();
 	}

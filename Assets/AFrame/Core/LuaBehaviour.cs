@@ -10,28 +10,30 @@ public class LuaBehaviour : MonoBehaviour
 	public String luaScript;
 	public LuaTable luaTable;
 
-	private LuaFunction luaAwake;
-	private LuaFunction luaStart;
-	private LuaFunction luaUpdate;
-	private LuaFunction luaOnDestroy;
-	private LuaFunction luaOnEnable;
-	private LuaFunction luaOnDisable;
-	private LuaFunction luaFixedUpdate;
-	private LuaFunction luaLateUpdate;
+	private delegate void LuaFunc(LuaTable self);
+
+	private LuaFunc luaAwake;
+	private LuaFunc luaStart;
+	private LuaFunc luaUpdate;
+	private LuaFunc luaOnDestroy;
+	private LuaFunc luaOnEnable;
+	private LuaFunc luaOnDisable;
+	private LuaFunc luaFixedUpdate;
+	private LuaFunc luaLateUpdate;
 
 	public void Init(LuaTable table)
 	{
 		luaTable = table;
 		luaScript = table.Get<String>("__cname");
 
-		luaAwake = luaTable.Get<LuaFunction>("Awake"); 
-		luaStart = luaTable.Get<LuaFunction>("Start"); 
-		luaUpdate = luaTable.Get<LuaFunction>("Update"); 
-		luaOnDestroy = luaTable.Get<LuaFunction>("OnDestroy"); 
-		luaOnEnable = luaTable.Get<LuaFunction>("OnEnable"); 
-		luaOnDisable = luaTable.Get<LuaFunction>("OnDisable"); 
-		luaFixedUpdate = luaTable.Get<LuaFunction>("FixedUpdate"); 
-		luaLateUpdate = luaTable.Get<LuaFunction>("LateUpdate"); 
+		luaTable.Get("Awake", out luaAwake); 
+		luaTable.Get("Start", out luaStart); 
+		luaTable.Get("Update", out luaUpdate);
+		luaTable.Get("OnDestroy", out luaOnDestroy); 
+		luaTable.Get("OnEnable", out luaOnEnable); 
+		luaTable.Get("OnDisable", out luaOnDisable); 
+		luaTable.Get("FixedUpdate", out luaFixedUpdate); 
+		luaTable.Get("LateUpdate", out luaLateUpdate); 
 
 		CallAwake();
 	}
@@ -39,34 +41,34 @@ public class LuaBehaviour : MonoBehaviour
 	void CallAwake()
 	{
 		if (luaAwake != null) 
-			luaAwake.Call(luaTable);
+			luaAwake(luaTable);
 	}
 
 	void Start()
 	{
 		if (luaStart != null) 
-			luaStart.Call(luaTable);
+			luaStart(luaTable);
 	}
 	
 	void Update()
 	{
 		if (luaUpdate != null) 
-			luaUpdate.Call(luaTable);
+			luaUpdate(luaTable);
 	}
 
 	void OnDestroy()
 	{
 		if (luaOnDestroy != null) 
-			luaOnDestroy.Call(luaTable);
+			luaOnDestroy(luaTable);
 
-		SafeDispose(ref luaOnDestroy);
-		SafeDispose(ref luaOnDestroy);
-		SafeDispose(ref luaUpdate);
-		SafeDispose(ref luaStart);
-		SafeDispose(ref luaOnEnable);
-		SafeDispose(ref luaOnDisable);
-		SafeDispose(ref luaFixedUpdate);
-		SafeDispose(ref luaLateUpdate);
+		luaOnDestroy = null;
+		luaAwake = null;
+		luaUpdate = null;
+		luaStart = null;
+		luaOnEnable = null;
+		luaOnDisable = null;
+		luaFixedUpdate = null;
+		luaLateUpdate = null;
 
 		if (luaTable != null) 
 			luaTable.Dispose();
@@ -75,33 +77,25 @@ public class LuaBehaviour : MonoBehaviour
 	void OnEnable()
 	{
 		if (luaOnEnable != null)
-			luaOnEnable.Call(luaTable);
+			luaOnEnable(luaTable);
 	}
 
 	void OnDisable()
 	{
 		if (luaOnDisable != null)
-			luaOnDisable.Call(luaTable);
+			luaOnDisable(luaTable);
 	}
 
 	void FixedUpdate()
 	{
 		if (luaFixedUpdate != null)
-			luaFixedUpdate.Call(luaTable);
+			luaFixedUpdate(luaTable);
 	}
 
 	void LateUpdate()
 	{
 		if (luaLateUpdate != null)
-			luaLateUpdate.Call(luaTable);
+			luaLateUpdate(luaTable);
 	}
 
-	void SafeDispose(ref LuaFunction func)
-	{
-		if (func != null)
-		{
-			func.Dispose();
-			func = null;
-		}
-	}
 }

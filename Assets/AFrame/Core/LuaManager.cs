@@ -7,7 +7,7 @@ using XLua;
 [LuaCallCSharp]
 public class LuaManager
 {
-	private static LuaEnv luaEnv = new LuaEnv();
+	public static LuaEnv luaEnv = new LuaEnv();
     private static Dictionary<string, Asset> assets = new Dictionary<string, Asset>();
 
     public static void Init(Action succes)
@@ -55,11 +55,6 @@ public class LuaManager
             cb.Invoke();
             cb = null;
         }
-    }
-
-    public static T GetFunc<T>(string name)
-    {
-        return luaEnv.Global.Get<T>(name);
     }
 
     private static byte[] LuaLoader(ref string filepath)

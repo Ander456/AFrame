@@ -50,7 +50,6 @@ public static class XLuaGenConfig
 		typeof(System.Collections.Generic.List<int>),
 		typeof(Action<string>),
 		typeof(UnityEngine.Debug),
-		typeof(Camera),
 
 		// xAsset
 		typeof(XAsset.Assets),
@@ -113,7 +112,7 @@ public static class XLuaGenConfig
 		#if UNITY_WEBGL
 		new List<string>(){"UnityEngine.WWW", "threadPriority"},
 		#endif
-		new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
+//		new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
 		new List<string>(){"UnityEngine.Security", "GetChainOfTrustValue"},
 		new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
 		new List<string>(){"UnityEngine.Light", "areaSize"},

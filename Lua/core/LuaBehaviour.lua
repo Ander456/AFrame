@@ -15,6 +15,14 @@ function LuaBehaviour:ctor(...)
     self.transform = comp.transform
 end
 
+function LuaBehaviour:AddComponent(typ)
+    return self.gameObject:AddComponent(typ)
+end
+
+function LuaBehaviour:GetComponent(typ)
+    return self.gameObject:GetComponent(typ)
+end
+
 function LuaBehaviour:StartCoroutine(func)
     return self.cscomp:StartCoroutine(util.cs_generator(func))
 end
