@@ -22,6 +22,8 @@ public class PackerPolicy : UnityEditor.Sprites.IPackerPolicy
 	protected virtual bool AllowTightWhenTagged { get { return true; } }
 	protected virtual bool AllowRotationFlipping { get { return false; } }
 
+	public virtual bool AllowSequentialPacking { get { return true; } }
+
 	public static bool IsCompressedFormat(TextureFormat fmt)
 	{
 		if (fmt >= TextureFormat.DXT1 && fmt <= TextureFormat.DXT5)
@@ -32,7 +34,7 @@ public class PackerPolicy : UnityEditor.Sprites.IPackerPolicy
 			return true;
 		if (fmt == TextureFormat.ETC_RGB4)
 			return true;
-		if (fmt >= TextureFormat.ATC_RGB4 && fmt <= TextureFormat.ATC_RGBA8)
+		if (fmt >= TextureFormat.ETC_RGB4 && fmt <= TextureFormat.ETC2_RGBA8)
 			return true;
 		if (fmt >= TextureFormat.EAC_R && fmt <= TextureFormat.EAC_RG_SIGNED)
 			return true;
