@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c93fae2369d8f475b9c89d4143f09c73
-timeCreated: 1581581679
+guid: 6397b8d71925d4539ad5163d5e266bda
+timeCreated: 1582286283
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -64,5 +64,5 @@ TextureImporter:
     outline: []
   spritePackingTag: Textures
   userData: 
-  assetBundleName: assets/textures/log4
+  assetBundleName: 
   assetBundleVariant: 
