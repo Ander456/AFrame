@@ -79,8 +79,8 @@ public class PackerPolicy : UnityEditor.Sprites.IPackerPolicy
 				entry.settings.filterMode = Enum.IsDefined(typeof(FilterMode), ti.filterMode)
 					? ti.filterMode
 					: FilterMode.Bilinear;
-				entry.settings.maxWidth = 1024;
-				entry.settings.maxHeight = 1024;
+				entry.settings.maxWidth = 2048;
+				entry.settings.maxHeight = 2048;
 				entry.settings.generateMipMaps = ti.mipmapEnabled;
 				entry.settings.enableRotation = AllowRotationFlipping;
 				if (ti.mipmapEnabled)
