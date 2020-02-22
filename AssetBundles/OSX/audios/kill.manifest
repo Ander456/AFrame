@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-CRC: 1705213339
+CRC: 3640375530
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 29ac252ee4d7a7621d13ca6a611a6631
+    Hash: 22dfcf5b11a573e5dba6801beb54d7dc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c1642440719609290a7e09a50a7286f4
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
 HashAppended: 0
 ClassTypes:
-- Class: 28
+- Class: 83
   Script: {instanceID: 0}
 Assets:
-- Assets/Textures/log2.png
+- Assets/Audios/kill.mp3
 Dependencies: []

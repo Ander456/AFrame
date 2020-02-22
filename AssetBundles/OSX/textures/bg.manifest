@@ -1,16 +1,18 @@
 ManifestFileVersion: 0
-CRC: 594601709
+CRC: 747860754
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 43f1840c0ded3e254906ffc5cc0aff2a
+    Hash: c2ea670f5eae0f467266bd6b27314268
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c1642440719609290a7e09a50a7286f4
+    Hash: 36c33a819640bead83b84b1645a12e6d
 HashAppended: 0
 ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 Assets:
-- Assets/Textures/log.png
+- Assets/Textures/bg.png
 Dependencies: []

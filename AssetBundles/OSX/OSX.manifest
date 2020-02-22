@@ -1,55 +1,50 @@
 ManifestFileVersion: 0
-CRC: 2883604665
+CRC: 2739197428
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: assets/textures/log
-      Dependencies: {}
-    Info_1:
-      Name: assets/textures/log1
-      Dependencies: {}
-    Info_2:
-      Name: assets/scenes/main
-      Dependencies: {}
-    Info_3:
-      Name: assets/textures/log2
-      Dependencies: {}
-    Info_4:
-      Name: assets/textures/log3
-      Dependencies: {}
-    Info_5:
-      Name: assets/textures/log5
-      Dependencies: {}
-    Info_6:
-      Name: assets/textures/log4
-      Dependencies: {}
-    Info_7:
       Name: lua_g
       Dependencies: {}
-    Info_8:
-      Name: lua/base_g
+    Info_1:
+      Name: assets/scenes/main
       Dependencies: {}
-    Info_9:
-      Name: lua/core_g
-      Dependencies: {}
-    Info_10:
+    Info_2:
       Name: lua/net_g
       Dependencies: {}
-    Info_11:
-      Name: lua/net/http_g
+    Info_3:
+      Name: lua/core_g
       Dependencies: {}
-    Info_12:
-      Name: lua/net/luaprotobuf_g
+    Info_4:
+      Name: lua/base_g
       Dependencies: {}
-    Info_13:
+    Info_5:
       Name: lua/net/tcp_g
       Dependencies: {}
-    Info_14:
-      Name: prefabs/cube
+    Info_6:
+      Name: lua/net/luaprotobuf_g
       Dependencies: {}
-    Info_15:
-      Name: prefabs/logo
+    Info_7:
+      Name: lua/net/http_g
       Dependencies: {}
-    Info_16:
+    Info_8:
       Name: manifest
       Dependencies: {}
+    Info_9:
+      Name: prefabs/cube
+      Dependencies: {}
+    Info_10:
+      Name: prefabs/logo
+      Dependencies: {}
+    Info_11:
+      Name: atlas/test
+      Dependencies: {}
+    Info_12:
+      Name: textures/bg
+      Dependencies: {}
+    Info_13:
+      Name: audios/kill
+      Dependencies: {}
+    Info_14:
+      Name: prefabs/test/image
+      Dependencies:
+        Dependency_0: textures/bg

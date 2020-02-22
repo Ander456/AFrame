@@ -117,24 +117,38 @@ print("lua main")
 -- end
 
 -- --- test res load
--- Res.Load("Assets/Textures/log.png", typeof(UE.Texture2D), function(a)
+-- Res.Load("Assets/Textures/bg.png", typeof(UE.Texture2D), function(a)
 --     print(a.asset)
 -- end)
--- Res.Load("Assets/Textures/log1.png", typeof(UE.Sprite), function(a)
---     local sp = a.asset
---     Res.Load("Assets/Prefabs/Logo.prefab", typeof(GameObject), function(a)
---         local prefab = a.asset
---         local go  = GameObject.Instantiate(prefab)  
---         go.name = prefab.name   
---         local ins = LuaManager.AddLuaComponent(go, require("base.View"))
---         ins:OnLoaded(asset)
---         local render = ins:AddComponent(typeof(UE.SpriteRenderer))
---         render.sprite = sp
---     end)
--- end)
+-- local a = Res.LoadSync("Assets/Textures/bg.png", typeof(UE.Texture2D))
+-- print(a.asset)
+
+Res.Load("Assets/Atlas/Test/icon1.png", typeof(UE.Sprite), function(a)
+    local sp = a.asset
+    Res.Load("Assets/Prefabs/Logo.prefab", typeof(GameObject), function(a)
+        local prefab = a.asset
+        local go = GameObject.Instantiate(prefab)  
+        go.name = prefab.name   
+        local ins = LuaManager.AddLuaComponent(go, require("base.View"))
+        ins:OnLoaded(asset)
+        local render = ins:AddComponent(typeof(UE.SpriteRenderer))
+        render.sprite = sp
+    end)
+end)
+
+-- local a = Res.LoadSync("Assets/Atlas/Test/icon2.png", typeof(UE.Sprite))
+-- local sp = a.asset
+-- a = Res.LoadSync("Assets/Prefabs/Logo.prefab", typeof(GameObject))
+-- local prefab = a.asset
+-- local go = GameObject.Instantiate(prefab) 
+-- go.name = prefab.name   
+-- local ins = LuaManager.AddLuaComponent(go, require("base.View"))
+-- ins:OnLoaded(asset)
+-- local render = ins:AddComponent(typeof(UE.SpriteRenderer))
+-- render.sprite = sp
 
 -- --- test view
-UIManager = require("base.UIManager").new()
-UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
+-- UIManager = require("base.UIManager").new()
+-- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
 
 

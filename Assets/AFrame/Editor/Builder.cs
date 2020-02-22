@@ -101,6 +101,9 @@ public class Builder
         AssetDatabase.Refresh();  
         MarkLuaBytes();
         MarkPrefabs();
+		MarkAtlas();
+		MarkTextures();
+		MarkAudios();
         BuildScript.BuildManifest();
         BuildScript.BuildAssetBundles();
     }
@@ -144,4 +147,34 @@ public class Builder
             }
         }
     }
+
+	private static void MarkAtlas()
+	{
+		var path = "Assets/Atlas";
+		var subIndex = path.IndexOf('/') + 1;
+		var dirs = Directory.GetDirectories(path, "*", SearchOption.AllDirectories);
+		foreach (var item in dirs)
+		{
+			var im = AssetImporter.GetAtPath(item);
+			var assetBundleName = item.Substring(subIndex).ToLower();
+			if (!assetBundleName.Equals(im.assetBundleName))
+			{
+				im.assetBundleName = assetBundleName;
+			}
+		}
+	}
+
+	private static void MarkTextures()
+	{
+		var path = "Assets/Textures";
+		var searchPattern = "*.png";
+		MarkAssetsByRelativeDirWith(path, searchPattern);
+	}
+
+	private static void MarkAudios()
+	{
+		var path = "Assets/Audios";
+		var searchPattern = "(*.mpe|*.wav|*.ogg)";
+		MarkAssetsByRelativeDirWith(path, searchPattern);
+	}
 }

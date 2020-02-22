@@ -2,19 +2,18 @@ using System.IO;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
- 
+
 public class ImportTexture : AssetPostprocessor
 {
     void OnPreprocessTexture()
     {
 		TextureImporter textureImporter = assetImporter as TextureImporter;
-		if (textureImporter != null && assetPath.Contains("Assets/Atlas"))
+		if (textureImporter != null)
         {
-			string AtlasName = new System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(assetPath)).Name;
 			textureImporter.textureType = TextureImporterType.Sprite;
 			textureImporter.spriteImportMode = SpriteImportMode.Single;
 			textureImporter.spritePixelsPerUnit = 100;
-			textureImporter.spritePackingTag = AtlasName;
+			textureImporter.spritePackingTag = SpritePackingTag;
 
 			TextureImporterSettings textureImportSetting = new TextureImporterSettings();
 			textureImporter.ReadTextureSettings(textureImportSetting);
@@ -61,11 +60,18 @@ public class ImportTexture : AssetPostprocessor
         }
     }
 
+	string SpritePackingTag
+	{
+		get {
+			return assetPath.Contains ("Assets/Atlas") ? new System.IO.DirectoryInfo (System.IO.Path.GetDirectoryName (assetPath)).Name : "";
+		}
+	}
+
 	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
 	{
 		foreach (string str in movedAssets)
 		{
-			if (str.Contains ("Assets/Atlas")) 
+			if (str.Contains("Assets/Atlas")) 
 			{
 				AssetDatabase.ImportAsset(str);
 			}

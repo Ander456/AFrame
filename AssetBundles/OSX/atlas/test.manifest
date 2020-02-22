@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2594699923
+CRC: 351746193
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1865a3647d4d4afecdfdf16c6956da3d
+    Hash: f1f213e65721c68f18cc753beb5882b3
   TypeTreeHash:
     serializedVersion: 2
     Hash: 36c33a819640bead83b84b1645a12e6d
@@ -14,5 +14,9 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
-- Assets/Textures/log1.png
+- Assets/Atlas/Test/icon3.png
+- Assets/Atlas/Test/icon5.png
+- Assets/Atlas/Test/icon2.png
+- Assets/Atlas/Test/icon4.png
+- Assets/Atlas/Test/icon1.png
 Dependencies: []

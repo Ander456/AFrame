@@ -7,6 +7,11 @@ function M.Load(assetPath, typ, cb)
             cb(a)
         end
     end 
+end
+
+function M.LoadSync(assetPath, typ)
+    local asset = Assets.Load(assetPath, typ)
+    return asset
 end 
 
 return M
