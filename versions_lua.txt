@@ -1,10 +1,10 @@
-/Users/mio/Downloads/AFrame/Lua/main.lua=132268328170000000
+/Users/mio/Downloads/AFrame/Lua/main.lua=132269229490000000
 /Users/mio/Downloads/AFrame/Lua/core/Dispatcher.lua=132264039270000000
 /Users/mio/Downloads/AFrame/Lua/core/LuaBehaviour.lua=132266607340000000
 /Users/mio/Downloads/AFrame/Lua/core/functions.lua=132266605220000000
 /Users/mio/Downloads/AFrame/Lua/core/init.lua=132266438590000000
 /Users/mio/Downloads/AFrame/Lua/base/ResManager.lua=132268182680000000
-/Users/mio/Downloads/AFrame/Lua/base/UIManager.lua=132266435230000000
+/Users/mio/Downloads/AFrame/Lua/base/UIManager.lua=132269204410000000
 /Users/mio/Downloads/AFrame/Lua/base/View.lua=132266543810000000
 /Users/mio/Downloads/AFrame/Lua/core/util.lua=132215679760000000
 /Users/mio/Downloads/AFrame/Lua/net/init.lua=132264662550000000

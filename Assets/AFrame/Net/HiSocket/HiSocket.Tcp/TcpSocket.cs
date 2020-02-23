@@ -43,6 +43,11 @@ namespace HiSocket.Tcp
         public event Action OnDisconnected;
 
         /// <summary>
+        /// Trigger when error
+        /// </summary>
+        public event Action<Exception> OnError;
+
+        /// <summary>
         /// trigger when get message from server, it havent unpacked
         /// use .net socket api
         /// </summary>
@@ -116,6 +121,10 @@ namespace HiSocket.Tcp
                         }
                         catch (Exception e)
                         {
+                            lock (_locker)
+                            {
+                                ErrorEvnet(e);
+                            }
                             throw new Exception(e.ToString());
                         }
 
@@ -173,7 +182,7 @@ namespace HiSocket.Tcp
             }
             else
             {
-                AssertThat.Fail("Check host"); 
+                AssertThat.Fail("Check host");
             }
         }
 
@@ -335,6 +344,14 @@ namespace HiSocket.Tcp
             }
         }
 
+        private void ErrorEvnet(Exception e)
+        {
+            if (OnError != null)
+            {
+                OnError(e);
+            }
+        }
+
         private void SocketSendEvent(byte[] bytes)
         {
             if (OnSendBytes != null)
@@ -353,6 +370,7 @@ namespace HiSocket.Tcp
                 OnConnecting = null;
                 OnConnected = null;
                 OnDisconnected = null;
+                OnError = null;
                 OnReceiveBytes = null;
                 OnSendBytes = null;
                 SendBuffer.Dispose();

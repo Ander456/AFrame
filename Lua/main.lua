@@ -123,18 +123,18 @@ print("lua main")
 -- local a = Res.LoadSync("Assets/Textures/bg.png", typeof(UE.Texture2D))
 -- print(a.asset)
 
-Res.Load("Assets/Atlas/Test/icon1.png", typeof(UE.Sprite), function(a)
-    local sp = a.asset
-    Res.Load("Assets/Prefabs/Logo.prefab", typeof(GameObject), function(a)
-        local prefab = a.asset
-        local go = GameObject.Instantiate(prefab)  
-        go.name = prefab.name   
-        local ins = LuaManager.AddLuaComponent(go, require("base.View"))
-        ins:OnLoaded(asset)
-        local render = ins:AddComponent(typeof(UE.SpriteRenderer))
-        render.sprite = sp
-    end)
-end)
+-- Res.Load("Assets/Atlas/Test/icon1.png", typeof(UE.Sprite), function(a)
+--     local sp = a.asset
+--     Res.Load("Assets/Prefabs/Logo.prefab", typeof(GameObject), function(a)
+--         local prefab = a.asset
+--         local go = GameObject.Instantiate(prefab)  
+--         go.name = prefab.name   
+--         local ins = LuaManager.AddLuaComponent(go, require("base.View"))
+--         ins:OnLoaded(asset)
+--         local render = ins:AddComponent(typeof(UE.SpriteRenderer))
+--         render.sprite = sp
+--     end)
+-- end)
 
 -- local a = Res.LoadSync("Assets/Atlas/Test/icon2.png", typeof(UE.Sprite))
 -- local sp = a.asset
@@ -150,5 +150,6 @@ end)
 -- --- test view
 -- UIManager = require("base.UIManager").new()
 -- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
+print("hahah")
 
 

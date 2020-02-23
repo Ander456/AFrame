@@ -67,3 +67,8 @@ assets/scenes/main
 manifest
 prefabs/test/image
 textures/bg
+132269210009015350:
+assets/scenes/main
+audios/kill
+lua_g
+manifest

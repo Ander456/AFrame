@@ -54,6 +54,11 @@ namespace HiSocket.Tcp
         event Action OnDisconnected;
 
         /// <summary>
+        /// Trigger when error
+        /// </summary>
+        event Action<Exception> OnError;
+
+        /// <summary>
         /// trigger when get bytes from server
         /// use .net socket api
         /// </summary>
