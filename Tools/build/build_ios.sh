@@ -3,39 +3,29 @@
 # ==============================================
 #!/bin/sh
 
-echo "打包参数  uid is:"${uid}" branch is:"${branch}"
+echo "
+		打包参数
+	unity_path="${unity_path}"
+	project_path="${project_path}"
+	git_branch="${git_branch}"
+	bundleVersion="${bundleVersion}"
+	"
 
-cd `dirname $0`
+timestamp=$(date +"%Y%m%d%H%M%S")
 
-sh git.sh ${PROJPATH} 
+# sh ${project_path}/Tools/build/git.sh ${project_path} 
 
-TARGET=ios_${uid}_${branch}.ipa
+target=ios_${timestamp}_${branch}.ipa
+output_path=$project_path/IOS
 
-cd $PROJPATH/CFDemoProject
-
-
-# -p 后面跟的是密码，各机器可能不一样，要修改
-security unlock-keychain -p 111111 ~/Library/Keychains/login.keychain
-
-security set-keychain-setting -t 10800 -l ~/Library/Keychains/login.keychain
-
-
-### build xcode proj ###
+cd $project_path
 
 echo "将Unity导出成Xcode工程"
 
-rm -rf $PACK_PATH
+${unity_path} -projectPath $project_path -logFile /tmp/ios_debug_${timestamp}.log -executeMethod UnityBuild.BuildIOS -${companyName}-${productName}-${bundleVersion}-${build_type}-${bundleIdentifier} -quit -batchmode
 
-echo "ProjectPath:"/$PROJPATH
+cd $output_path || { echo "build xcode proj failed, error log:"; tail -n 400 /tmp/ios_debug_${timestamp}.log; exit 1; }
 
-$UNITY -projectPath $PROJPATH/CFDemoProject  -logFile /tmp/ios_debug_${uid}.log -executeMethod JenkinsBuild.BuildIOS -quit -batchmode
-
-cd $PACK_PATH || { echo "build xcode proj failed, error log:"; tail -n 400 /tmp/ios_debug_${uid}.log; exit 1; }
-
-# echo "apply sdk-mods"
-
-# $UNITY -projectPath $PROJPATH/CFDemoProject  -logFile /tmp/ios_mods_${uid}.log -executeMethod JenkinsBuild.ApplyMods -quit -batchmode
-# 
 echo "Xcode工程生成完毕"
 
 rm -rf *.ipa
@@ -50,15 +40,11 @@ echo "xcodebuild archive"
 
 xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -archivePath Unity-iPhone.xcarchive  CODE_SIGN_STYLE="Manual" CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" PROVISIONING_PROFILE_SPECIFIER="$PROVISIONING_PROFILE_NAME"
 
-#xcode8 or xcode8 earlier
-#xcodebuild -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${PACK_PATH}/longzhigu_ios_${uid}_${branch}.ipa -exportFormat ipa CODE_SIGN_IDENTITY=$CODE_SIGN_IDENTITY -exportProvisioningProfile "$PROVISIONING_PROFILE_NAME"
-
 echo "++++++++++++++ xcodebuild export +++++++++++++++++++"
 
-#xcode9 and later
-xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${PACK_PATH}/ipa  -exportOptionsPlist ${PLIST_PATH}
+xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${output_path}/ipa  -exportOptionsPlist ${PLIST_PATH}
 
-OUTPUT=${PACK_PATH}/ipa
+OUTPUT=${output_path}/ipa
 
 if [ ! -d "$OUTPUT" ]; then  
 	echo "not found build folfer, sorry"
@@ -67,6 +53,4 @@ fi
 
 cd ipa
 
-mv Unity-iPhone.ipa ${TARGET}
-
-open .
+mv Unity-iPhone.ipa ${target}

@@ -10,12 +10,9 @@ public struct BuildGenernalSetting
 	public string projectName;
 	public string productName;
 	public string identifier;
-	public string version;
+	public string bundleVersion;
 	public string channel;
-	public int generation;
-	public string outputPath;
 	public string companyName;
-
 	public bool isDebug; 
 }
 
@@ -50,20 +47,28 @@ public class UnityBuild
 			BuildAndroid();
 
 		if (arguments.Contains("-ios"))
-			BuildiOS();
+			BuildIOS();
 
 	}
 
 	private static void BuildWindows()
 	{
-		string output = string.Format("{0}/../Publish/Windows/{1}", Application.dataPath, PlayerSettings.productName);
-		BuildPipeline.BuildPlayer(EnabledScenePaths, output, BuildTarget.StandaloneWindows, BuildOptions.None);
+		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
+			scenes = EnabledScenePaths,
+			locationPathName = Application.dataPath + "../Windows",
+			target = BuildTarget.StandaloneWindows
+		};
+		BuildPipeline.BuildPlayer(playerOptions);
 	}
 
 	private static void BuildMacOS()
 	{
-		string output = string.Format("{0}/../Publish/Macos/{1}", Application.dataPath, PlayerSettings.productName);
-		BuildPipeline.BuildPlayer(EnabledScenePaths, output, BuildTarget.StandaloneOSXUniversal, BuildOptions.None);
+		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
+			scenes = EnabledScenePaths,
+			locationPathName = Application.dataPath + "../Macos",
+			target = BuildTarget.StandaloneOSXUniversal
+		};
+		BuildPipeline.BuildPlayer(playerOptions);
 	}
 
 	private static void BuildAndroid()
@@ -104,36 +109,38 @@ public class UnityBuild
 		}
 
 		BuildGenernalSetting buildGenernalSetting = ApplyGeneralSettings();
-		PlayerSettings.Android.bundleVersionCode = buildGenernalSetting.generation;
+		PlayerSettings.Android.bundleVersionCode = BundleVersionCode(buildGenernalSetting.bundleVersion);
 
 		AssetDatabase.Refresh();
 
-		string output = string.Format("{0}/../Publish/Android/Apks/{1}", Application.dataPath, buildGenernalSetting.outputPath);
-
-		BuildPipeline.BuildPlayer(EnabledScenePaths, output, BuildTarget.Android, BuildOptions.None);
+		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
+			scenes = EnabledScenePaths,
+			locationPathName = Application.dataPath + "../Publish/Android/Apks/",
+			target = BuildTarget.Android,
+			options = EditorUserBuildSettings.development ? BuildOptions.Development | BuildOptions.AllowDebugging : BuildOptions.None
+		};
+		BuildPipeline.BuildPlayer(playerOptions);
 	}
 
-	private static void BuildiOS()
+	private static void BuildIOS()
 	{
 		BuildGenernalSetting buildGenernalSetting = ApplyGeneralSettings();
-		string output = string.Format("{0}/../Publish/Ios/{1}", Application.dataPath, buildGenernalSetting.outputPath);
 
 		PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;//目标设备
 		PlayerSettings.iOS.targetOSVersionString = "8.0";//最低iOS版本要求
 		PlayerSettings.iOS.statusBarStyle = iOSStatusBarStyle.Default;
 		PlayerSettings.iOS.requiresPersistentWiFi = true;
-
-		PlayerSettings.statusBarHidden = true;
-		PlayerSettings.allowedAutorotateToLandscapeLeft = true;
-		PlayerSettings.allowedAutorotateToLandscapeRight = true;
-		PlayerSettings.allowedAutorotateToPortrait = false;
-		PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
-		PlayerSettings.defaultIsFullScreen = true;
-		PlayerSettings.stripEngineCode = false;
+		PlayerSettings.iOS.buildNumber = buildGenernalSetting.bundleVersion;
 
 		AssetDatabase.Refresh();
 
-		BuildPipeline.BuildPlayer(EnabledScenePaths, output, BuildTarget.iOS, BuildOptions.None);
+		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
+			scenes = EnabledScenePaths,
+			locationPathName = Application.dataPath + "../Publish/IOS/",
+			target = BuildTarget.iOS,
+			options = EditorUserBuildSettings.development ? BuildOptions.Development | BuildOptions.AllowDebugging : BuildOptions.None
+		};
+		BuildPipeline.BuildPlayer(playerOptions);
 	}
 
 	private static BuildGenernalSetting ApplyGeneralSettings()
@@ -154,25 +161,16 @@ public class UnityBuild
 			{
 				settings.channel = arg.Split('=')[1];
 			} 
-			else if (arg.StartsWith("version", StringComparison.OrdinalIgnoreCase))
+			else if (arg.StartsWith("bundleVersion", StringComparison.OrdinalIgnoreCase))
 			{
-				settings.version = arg.Split('=')[1];
+				settings.bundleVersion = arg.Split('=')[1];
 			} 
-			else if (arg.StartsWith("generation", StringComparison.OrdinalIgnoreCase)) 
-			{
-				string code = arg.Split('=')[1];
-				int.TryParse(code, out settings.generation);
-			} 
-			else if (arg.StartsWith("publish", StringComparison.OrdinalIgnoreCase)) 
+			else if (arg.StartsWith("build_type", StringComparison.OrdinalIgnoreCase)) 
 			{
 				settings.isDebug = true;
 				string code = arg.Split('=')[1];
 				if (code == "release")
 					settings.isDebug = false;
-			} 
-			else if (arg.StartsWith("output_path", StringComparison.OrdinalIgnoreCase)) 
-			{
-				settings.outputPath = arg.Split('=')[1];
 			} 
 			else if (arg.StartsWith("companyName", StringComparison.OrdinalIgnoreCase)) 
 			{
@@ -187,8 +185,33 @@ public class UnityBuild
 		PlayerSettings.companyName = settings.companyName;
 		PlayerSettings.productName = settings.productName;
 		PlayerSettings.applicationIdentifier = settings.identifier;
-		PlayerSettings.bundleVersion = settings.version;
+		PlayerSettings.bundleVersion = settings.bundleVersion;
+
+		PlayerSettings.statusBarHidden = true;
+		PlayerSettings.allowedAutorotateToLandscapeLeft = true;
+		PlayerSettings.allowedAutorotateToLandscapeRight = true;
+		PlayerSettings.allowedAutorotateToPortrait = false;
+		PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
+		PlayerSettings.defaultIsFullScreen = true;
+		PlayerSettings.stripEngineCode = false;
+
+		EditorUserBuildSettings.development = settings.isDebug;
 
 		return settings;
 	}
+
+	public static int BundleVersionCode(string version)
+    {
+        if (version == null || string.IsNullOrEmpty(version)) return 0;
+        string[] nums = version.Split(new char[] { '.' }, System.StringSplitOptions.RemoveEmptyEntries);
+        if (nums.Length != 3)
+        {
+            return 0;
+        }
+        int major = int.Parse(nums[0]);
+        int minor = int.Parse(nums[1]);
+        int build = int.Parse(nums[2]);
+        int result = major * 10000 + minor * 100 + build;
+		return result;
+    }
 }
