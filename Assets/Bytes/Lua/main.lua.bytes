@@ -148,8 +148,7 @@ print("lua main")
 -- render.sprite = sp
 
 -- --- test view
--- UIManager = require("base.UIManager").new()
--- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
-print("hahah")
+UIManager = require("base.UIManager").new()
+UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
 
 
