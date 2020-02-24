@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 195038058
+CRC: 1395838834
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0af64d797f51d8020de9000b222250da
+    Hash: 911d0bc09694b49c6800ee5535cc2400
   TypeTreeHash:
     serializedVersion: 2
     Hash: d960a7481d3b4d4093ef532804bbb0c1
@@ -24,4 +24,4 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/Test/Image.prefab
 Dependencies:
-- /Users/mio/Downloads/AFrame/AssetBundles/OSX/textures/bg
+- /Users/Alex/AFrame/AssetBundles/OSX/textures/bg

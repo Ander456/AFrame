@@ -98,10 +98,10 @@ print("lua main")
 
 --- test luabehaviour
 -- local asset = Assets.LoadAsync("Assets/Prefabs/Cube.prefab", typeof(GameObject))
--- asset.completed = function(a) 
+-- asset.completed = function(a)
 --     local prefab = a.asset
---     local go  = GameObject.Instantiate(prefab)  
---     go.name = prefab.name   
+--     local go  = GameObject.Instantiate(prefab)
+--     go.name = prefab.name
 --     local ins = LuaManager.AddLuaComponent(go, LuaBehaviour)
 --     ins:StartCoroutine(function()
 --         coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
@@ -127,8 +127,8 @@ print("lua main")
 --     local sp = a.asset
 --     Res.Load("Assets/Prefabs/Logo.prefab", typeof(GameObject), function(a)
 --         local prefab = a.asset
---         local go = GameObject.Instantiate(prefab)  
---         go.name = prefab.name   
+--         local go = GameObject.Instantiate(prefab)
+--         go.name = prefab.name
 --         local ins = LuaManager.AddLuaComponent(go, require("base.View"))
 --         ins:OnLoaded(asset)
 --         local render = ins:AddComponent(typeof(UE.SpriteRenderer))
@@ -140,8 +140,8 @@ print("lua main")
 -- local sp = a.asset
 -- a = Res.LoadSync("Assets/Prefabs/Logo.prefab", typeof(GameObject))
 -- local prefab = a.asset
--- local go = GameObject.Instantiate(prefab) 
--- go.name = prefab.name   
+-- local go = GameObject.Instantiate(prefab)
+-- go.name = prefab.name
 -- local ins = LuaManager.AddLuaComponent(go, require("base.View"))
 -- ins:OnLoaded(asset)
 -- local render = ins:AddComponent(typeof(UE.SpriteRenderer))
@@ -151,5 +151,3 @@ print("lua main")
 -- UIManager = require("base.UIManager").new()
 -- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
 print("hahah")
-
-
