@@ -3,39 +3,34 @@
 # ==============================================
 #!/bin/bash
 
-echo "打包参数 uid is:"${uid}" branch is:"${branch}" build:"${BUILD_NUMBER}" email:"${email}"
+echo "
+	打包参数
+	unity_path="${unity_path}"
+	project_path="${project_path}"
+	build_path="${build_path}"
+	git_branch="${git_branch}"
+	identifier="${identifier}"
+	bundleVersion="${bundleVersion}"
+	channel=${channel}
+	build_type=${build_type}
+	"
 
-#游戏工程目录#
-PROJPATH=/Users/Alex/AFrame/
+timestamp=$(date +"%Y%m%d%H%M%S")
 
-TARGET_PRE=aframe.apk
+log_path=$project_path/Publish/logs/Android/${timestamp}.log
 
-TARGET=android_${uid}_${branch}.apk
+target=android_${timestamp}_${git_branch}.apk
 
-cd `dirname $0`
+# sh ${project_path}/Tools/build/git.sh ${project_path} 
 
-sh git.sh ${PROJPATH} 
+echo "开始打包Android"
 
-cd ${PROJPATH}
-
-rm -rf *.apk
-
-$UNITY -quit -batchmode -projectPath $PROJPATH -logFile /tmp/android_debug_${uid}.log -executeMethod UnityBuild.BuildAndroid 
+${unity_path} -projectPath $project_path -quit -batchmode -logFile $log_path -executeMethod UnityBuild.BuildAndroid companyName=${companyName} productName=${productName} bundleVersion=${bundleVersion} build_type=${build_type} identifier="${identifier}" channel=${channel} build_path="${build_path}/${target}"
 
 if [ $? -ne 0 ]; then
 	echo "打包失败"
-    cat /tmp/android_debug_${uid}.log
+    cat $log_path
     exit 1
 fi
 
-cd ${PROJPATH}
-
-mv ${TARGET_PRE} ${TARGET} || { echo "not found build apk, Sorry!"; exit 1; }
-
-cd `dirname $0`
-
-sh upload.sh ${PROJPATH} ${TARGET}
-
-sh sendmail.sh ${TARGET} 
-
-sh qrcode.sh ${TARGET}
+echo "打包Android完毕"

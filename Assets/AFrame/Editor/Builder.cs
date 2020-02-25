@@ -95,7 +95,7 @@ public class Builder
     }
 
     [MenuItem("Assets/AssetBundles/Build")]
-    static void Build()
+    public static void Build()
     {
         CopyLua2Bytes();
         AssetDatabase.Refresh();  

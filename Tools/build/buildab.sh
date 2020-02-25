@@ -1,24 +1,22 @@
  #!/bin/sh
 
-UNITY_PATH=/Applications/Unity/Unity5.app/Contents/MacOS/Unity
-
-PROJECT_Android=/Users/dn/Documents/patch_android
-
-PROJECT_Ios=/Users/dn/Documents/patch_ios
-
-Shelll_Path=/Library/WebServer/Documents/dn
-
-target_branch=release_jenkins #release-res
-
+echo "
+    unity_path="${unity_path}"
+    project_path="${project_path}"
+    git_branch="${git_branch}"
+    platform="${platform}"
+    "
 
 function gitopt() {
     git clean -dfq
     git checkout .
     git fetch -p
-    git checkout ${target_branch}
+    git checkout ${git_branch}
     git pull -q
     git log -1
 }
+
+log_path=$project_path/Publish/logs/AB/${timestamp}.log
 
 ######################### androids ###########################
 
@@ -26,29 +24,20 @@ echo "****************** android **********************"
 
 echo "android git 还原环境，拉到最新"
 
-cd ${PROJECT_Android}
+cd ${project_path}
 
 gitopt
 
-
 echo "\n开始生成Android 补丁，请耐心等待..."
 
-$UNITY_PATH -quit -batchmode -projectPath ${PROJECT_Android}"/XProject" -logFile /tmp/patch_and_abbuild.log -executeMethod XBundlePresent.JenkinsPatch
+${unity_path} -projectPath $project_path -quit -batchmode -logFile $log_path -executeMethod Builder.Build
 
 if [ $? -ne 0 ];then
-    echo "error Build android ab " | cat /tmp/patch_and_abbuild.log
+    echo "error Build android ab " | cat $log_path
     exit 2
 fi
 
-if [ -f "${PROJECT_Android}/XProject/Shell/Error.Log" ];then
-    echo "error occur, as list:"
-    cat ${PROJECT_Android}/XProject/Shell/Error.Log
-    exit 1
-fi
-
-echo "Android 补丁生成完毕, android 测试服上传开始..."
-
-sh ${Shelll_Path}/upload.sh "android" 1
+echo "Android 补丁生成完毕"
 
 echo "\n\n"
 
@@ -59,31 +48,20 @@ echo "******************* ios ***********************"
 
 echo "iOS git 还原环境，拉到最新"
 
-cd ${PROJECT_Ios}
+cd ${project_path}
 
 gitopt
 
-
 echo "\n开始生成iOS补丁，请耐心等待..."
 
-$UNITY_PATH -quit -batchmode -projectPath ${PROJECT_Ios}"/XProject" -logFile /tmp/patch_ios_abbuild.log -executeMethod XBundlePresent.JenkinsPatch
+${unity_path} -projectPath $project_path -quit -batchmode -logFile $log_path -executeMethod Builder.Build
 
 if [ $? -ne 0 ];then
-    echo "error Build android ab " | cat /tmp/patch_ios_prebuild.log
+    echo "error Build ios ab " | cat $log_path
     exit 2
 fi
 
-if [ -f "${PROJECT_Ios}/XProject/Shell/Error.Log" ];then
-    echo "error occur, as list:"
-    cat ${PROJECT_Ios}/XProject/Shell/Error.Log
-    exit 1
-fi
-
-echo "iOS 补丁生成完毕, ios 测试服上传开始..."
-
-sh ${Shelll_Path}/upload.sh "ios" 1
-
-echo "上传全部完成，请 QA 验收-- 如果中间有回退操作，请等待 cdn同步"
+echo "iOS 补丁生成完毕"
 
 echo "\n\n*******************************************"
 

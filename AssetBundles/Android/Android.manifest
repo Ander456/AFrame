@@ -1,0 +1,50 @@
+ManifestFileVersion: 0
+CRC: 2891676124
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: lua_g
+      Dependencies: {}
+    Info_1:
+      Name: assets/scenes/main
+      Dependencies: {}
+    Info_2:
+      Name: atlas/test
+      Dependencies: {}
+    Info_3:
+      Name: lua/net_g
+      Dependencies: {}
+    Info_4:
+      Name: lua/core_g
+      Dependencies: {}
+    Info_5:
+      Name: lua/base_g
+      Dependencies: {}
+    Info_6:
+      Name: lua/net/tcp_g
+      Dependencies: {}
+    Info_7:
+      Name: lua/net/luaprotobuf_g
+      Dependencies: {}
+    Info_8:
+      Name: lua/net/http_g
+      Dependencies: {}
+    Info_9:
+      Name: manifest
+      Dependencies: {}
+    Info_10:
+      Name: textures/bg
+      Dependencies: {}
+    Info_11:
+      Name: prefabs/test/image
+      Dependencies:
+        Dependency_0: textures/bg
+    Info_12:
+      Name: prefabs/cube
+      Dependencies: {}
+    Info_13:
+      Name: prefabs/logo
+      Dependencies: {}
+    Info_14:
+      Name: audios/kill
+      Dependencies: {}

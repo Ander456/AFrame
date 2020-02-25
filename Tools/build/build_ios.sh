@@ -4,33 +4,42 @@
 #!/bin/sh
 
 echo "
-		打包参数
+	打包参数
 	unity_path="${unity_path}"
 	project_path="${project_path}"
+	build_path="${build_path}"
 	git_branch="${git_branch}"
+	identifier="${identifier}"
 	bundleVersion="${bundleVersion}"
+	channel=${channel}
+	build_type=${build_type}
 	"
-
-timestamp=$(date +"%Y%m%d%H%M%S")
 
 # sh ${project_path}/Tools/build/git.sh ${project_path} 
 
-target=ios_${timestamp}_${branch}.ipa
-output_path=$project_path/IOS
+timestamp=$(date +"%Y%m%d%H%M%S")
 
-cd $project_path
+log_path=$project_path/Publish/logs/iOS/${timestamp}.log
 
 echo "将Unity导出成Xcode工程"
 
-${unity_path} -projectPath $project_path -logFile /tmp/ios_debug_${timestamp}.log -executeMethod UnityBuild.BuildIOS -${companyName}-${productName}-${bundleVersion}-${build_type}-${bundleIdentifier} -quit -batchmode
+rm -rf ${build_path}
 
-cd $output_path || { echo "build xcode proj failed, error log:"; tail -n 400 /tmp/ios_debug_${timestamp}.log; exit 1; }
+${unity_path} -projectPath $project_path -quit -batchmode -logFile $log_path -executeMethod UnityBuild.BuildIOS companyName=${companyName} productName=${productName} bundleVersion=${bundleVersion} build_type=${build_type} identifier="${identifier}" channel=${channel} build_path="${build_path}"
+
+if [ $? -ne 0 ]; then
+	echo "打包失败"
+    cat $log_path
+    exit 1
+fi
 
 echo "Xcode工程生成完毕"
 
-rm -rf *.ipa
+cd $build_path
 
-rm -rf *.xcarchive
+rm -rf ${build_path}/build
+
+target=ios_${timestamp}_${git_branch}.ipa
 
 echo "xcodebuild clean"
 
@@ -38,13 +47,13 @@ xcodebuild clean -quiet
 
 echo "xcodebuild archive"
 
-xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -archivePath Unity-iPhone.xcarchive  CODE_SIGN_STYLE="Manual" CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" PROVISIONING_PROFILE_SPECIFIER="$PROVISIONING_PROFILE_NAME"
+xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -configuration $build_type -archivePath Unity-iPhone.xcarchive CODE_SIGN_STYLE="Manual" CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" PROVISIONING_PROFILE_SPECIFIER="$PROVISIONING_PROFILE_NAME"
 
 echo "++++++++++++++ xcodebuild export +++++++++++++++++++"
 
-xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${output_path}/ipa  -exportOptionsPlist ${PLIST_PATH}
+xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${build_path}/ipa  -exportOptionsPlist ${PLIST_PATH}
 
-OUTPUT=${output_path}/ipa
+OUTPUT=${build_path}/ipa
 
 if [ ! -d "$OUTPUT" ]; then  
 	echo "not found build folfer, sorry"

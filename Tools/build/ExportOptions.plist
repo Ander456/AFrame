@@ -15,11 +15,7 @@
 	<string>iPhone Distribution</string>
 	<key>signingStyle</key>
 	<string>manual</string>
-	<key>stripSwiftSymbols</key>
-	<true/>
 	<key>teamID</key>
 	<string>8VLYWLCLEX</string>
-	<key>thinning</key>
-	<string>&lt;none&gt;</string>
 </dict>
 </plist>

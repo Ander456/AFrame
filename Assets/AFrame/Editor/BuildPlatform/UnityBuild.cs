@@ -7,12 +7,12 @@ using UnityEngine;
 
 public struct BuildGenernalSetting
 {
-	public string projectName;
 	public string productName;
 	public string identifier;
 	public string bundleVersion;
 	public string channel;
 	public string companyName;
+	public string buildPath;
 	public bool isDebug; 
 }
 
@@ -33,29 +33,11 @@ public class UnityBuild
 		}
     }
 
-	public static void BuildPlatforms()
-	{
-		List<string> arguments = Environment.GetCommandLineArgs().ToList();
-
-		if (arguments.Contains("-windows"))
-			BuildWindows();
-
-		if (arguments.Contains("-macos"))
-			BuildMacOS();
-
-		if (arguments.Contains("-android"))
-			BuildAndroid();
-
-		if (arguments.Contains("-ios"))
-			BuildIOS();
-
-	}
-
 	private static void BuildWindows()
 	{
 		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
 			scenes = EnabledScenePaths,
-			locationPathName = Application.dataPath + "../Windows",
+			locationPathName = Path.Combine(Application.dataPath.Replace("Assets",""), "Publish/Windows"),
 			target = BuildTarget.StandaloneWindows
 		};
 		BuildPipeline.BuildPlayer(playerOptions);
@@ -65,7 +47,7 @@ public class UnityBuild
 	{
 		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
 			scenes = EnabledScenePaths,
-			locationPathName = Application.dataPath + "../Macos",
+			locationPathName = Path.Combine(Application.dataPath.Replace("Assets",""), "Publish/MacOS"),
 			target = BuildTarget.StandaloneOSXUniversal
 		};
 		BuildPipeline.BuildPlayer(playerOptions);
@@ -73,6 +55,10 @@ public class UnityBuild
 
 	private static void BuildAndroid()
 	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android,BuildTarget.Android);
+
+		Builder.Build();
+
 		string keystoreName = string.Empty;
 		string keystorePass = string.Empty;
 		string keyaliasName = string.Empty;
@@ -115,7 +101,7 @@ public class UnityBuild
 
 		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
 			scenes = EnabledScenePaths,
-			locationPathName = Application.dataPath + "../Publish/Android/Apks/",
+			locationPathName = buildGenernalSetting.buildPath,
 			target = BuildTarget.Android,
 			options = EditorUserBuildSettings.development ? BuildOptions.Development | BuildOptions.AllowDebugging : BuildOptions.None
 		};
@@ -124,6 +110,10 @@ public class UnityBuild
 
 	private static void BuildIOS()
 	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+
+		Builder.Build();
+
 		BuildGenernalSetting buildGenernalSetting = ApplyGeneralSettings();
 
 		PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;//目标设备
@@ -136,7 +126,7 @@ public class UnityBuild
 
 		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
 			scenes = EnabledScenePaths,
-			locationPathName = Application.dataPath + "../Publish/IOS/",
+			locationPathName = buildGenernalSetting.buildPath,
 			target = BuildTarget.iOS,
 			options = EditorUserBuildSettings.development ? BuildOptions.Development | BuildOptions.AllowDebugging : BuildOptions.None
 		};
@@ -149,11 +139,7 @@ public class UnityBuild
 
 		foreach (string arg in Environment.GetCommandLineArgs()) 
 		{
-			if (arg.StartsWith("project_name", StringComparison.OrdinalIgnoreCase))
-			{
-				settings.projectName = arg.Split('=')[1];
-			} 
-			else if (arg.StartsWith("identifier", StringComparison.OrdinalIgnoreCase)) 
+			if (arg.StartsWith("identifier", StringComparison.OrdinalIgnoreCase)) 
 			{
 				settings.identifier = arg.Split('=')[1];
 			} 
@@ -169,7 +155,7 @@ public class UnityBuild
 			{
 				settings.isDebug = true;
 				string code = arg.Split('=')[1];
-				if (code == "release")
+				if (code == "Release")
 					settings.isDebug = false;
 			} 
 			else if (arg.StartsWith("companyName", StringComparison.OrdinalIgnoreCase)) 
@@ -179,6 +165,10 @@ public class UnityBuild
 			else if (arg.StartsWith("productName", StringComparison.OrdinalIgnoreCase)) 
 			{
 				settings.productName = arg.Split('=')[1];
+			}
+			else if (arg.StartsWith("build_path", StringComparison.OrdinalIgnoreCase)) 
+			{
+				settings.buildPath = arg.Split('=')[1];
 			}
 		}
 
