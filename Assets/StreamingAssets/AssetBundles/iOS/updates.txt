@@ -23,3 +23,8 @@ assets/scenes/main
 lua_g
 132269238772335260:
 lua_g
+132271093436350710:
+assets/scenes/main
+lua/base_g
+lua_g
+manifest
