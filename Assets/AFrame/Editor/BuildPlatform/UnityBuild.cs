@@ -59,6 +59,11 @@ public class UnityBuild
 
 		Builder.Build();
 
+		CSObjectWrapEditor.Generator.ClearAll();
+		CSObjectWrapEditor.Generator.GenAll();
+		XLua.DelegateBridge.Gen_Flag = true;
+		AssetDatabase.Refresh();
+
 		string keystoreName = string.Empty;
 		string keystorePass = string.Empty;
 		string keyaliasName = string.Empty;
@@ -114,6 +119,11 @@ public class UnityBuild
 
 		Builder.Build();
 
+		CSObjectWrapEditor.Generator.ClearAll();
+        CSObjectWrapEditor.Generator.GenAll();
+        XLua.DelegateBridge.Gen_Flag = true;
+        AssetDatabase.Refresh();
+
 		BuildGenernalSetting buildGenernalSetting = ApplyGeneralSettings();
 
 		PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;//目标设备
@@ -122,6 +132,8 @@ public class UnityBuild
 		PlayerSettings.iOS.requiresPersistentWiFi = true;
 		PlayerSettings.iOS.buildNumber = buildGenernalSetting.bundleVersion;
 		PlayerSettings.iOS.appleEnableAutomaticSigning = false;
+
+		PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, 1);
 
 		AssetDatabase.Refresh();
 
@@ -143,7 +155,6 @@ public class UnityBuild
 			if (arg.StartsWith("identifier", StringComparison.OrdinalIgnoreCase)) 
 			{
 				settings.identifier = arg.Split('=')[1];
-				Debug.Log ("fuck" + settings.identifier);
 			} 
 			else if (arg.StartsWith("channel", StringComparison.OrdinalIgnoreCase)) 
 			{
@@ -177,8 +188,9 @@ public class UnityBuild
 		PlayerSettings.companyName = settings.companyName;
 		PlayerSettings.productName = settings.productName;
 		PlayerSettings.applicationIdentifier = settings.identifier;
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, settings.identifier);
 		PlayerSettings.bundleVersion = settings.bundleVersion;
-		Debug.Log ("fuck2" + PlayerSettings.applicationIdentifier);
+
 		PlayerSettings.statusBarHidden = true;
 		PlayerSettings.allowedAutorotateToLandscapeLeft = true;
 		PlayerSettings.allowedAutorotateToLandscapeRight = true;

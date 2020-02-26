@@ -5,17 +5,21 @@
 	<key>compileBitcode</key>
 	<false/>
 	<key>method</key>
-	<string>enterprise</string>
+	<string>development</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.perfectworld.cfgame</key>
-		<string>JoyYouUniversal</string>
+		<key>com.wxianlai.yunnanmj</key>
+		<string>test_provision_profile</string>
 	</dict>
 	<key>signingCertificate</key>
-	<string>iPhone Distribution</string>
+	<string>iPhone Developer</string>
 	<key>signingStyle</key>
 	<string>manual</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
 	<key>teamID</key>
-	<string>8VLYWLCLEX</string>
+	<string>296YK95RJ6</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
 </dict>
 </plist>

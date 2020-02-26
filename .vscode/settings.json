@@ -1,4 +1,7 @@
 {
     "git.ignoreLimitWarning": true,
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.rename.enablePreview": false,
+    "search.useReplacePreview": false
 }
