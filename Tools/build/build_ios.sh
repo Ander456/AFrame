@@ -59,11 +59,13 @@ xcodebuild clean -quiet
 
 echo "xcodebuild archive"
 
-xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -configuration $build_type -archivePath Unity-iPhone.xcarchive CODE_SIGN_STYLE="Manual" CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" PROVISIONING_PROFILE_SPECIFIER="$PROVISIONING_PROFILE_NAME"
+xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -configuration $build_type -archivePath Unity-iPhone.xcarchive
 
 echo "++++++++++++++ xcodebuild export +++++++++++++++++++"
 
-xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${build_path}/ipa  -exportOptionsPlist ${PLIST_PATH}
+PLIST_PATH=${project_path}/Tools/build/ExportOptions.plist
+
+xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${build_path}/${target}  -exportOptionsPlist ${PLIST_PATH}
 
 OUTPUT=${build_path}/ipa
 

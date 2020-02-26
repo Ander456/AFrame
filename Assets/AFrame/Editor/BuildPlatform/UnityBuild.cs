@@ -121,6 +121,7 @@ public class UnityBuild
 		PlayerSettings.iOS.statusBarStyle = iOSStatusBarStyle.Default;
 		PlayerSettings.iOS.requiresPersistentWiFi = true;
 		PlayerSettings.iOS.buildNumber = buildGenernalSetting.bundleVersion;
+		PlayerSettings.iOS.appleEnableAutomaticSigning = false;
 
 		AssetDatabase.Refresh();
 
