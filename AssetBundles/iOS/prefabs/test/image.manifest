@@ -3,7 +3,7 @@ CRC: 3926325701
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 09e4741180bccbc16216b3094aa4f4db
+    Hash: 831a1f481a4e0c7a9cc96182f700cd80
   TypeTreeHash:
     serializedVersion: 2
     Hash: d960a7481d3b4d4093ef532804bbb0c1
@@ -24,4 +24,4 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/Test/Image.prefab
 Dependencies:
-- /Users/mio/Downloads/AFrame/AssetBundles/iOS/textures/bg
+- /Users/Alex/AFrame/AssetBundles/iOS/textures/bg

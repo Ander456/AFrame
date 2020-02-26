@@ -30,10 +30,10 @@ public class XcodePostProcess
 		// 修改BITCODE设置的例子
 		project.SetBuildProperty(targetGuid, "ENABLE_BITCODE", "NO");
 		// 设置签名证书
-		project.SetBuildProperty(targetGuid, "CODE_SIGN_IDENTITY", "Apple Development: 540545947@qq.com (73CV3XMX9K)");
-		project.SetBuildProperty(targetGuid, "PROVISIONING_PROFILE", "b6b4ebb8-0b4e-4deb-b357-4b991eada6bb");
-		project.SetBuildProperty(targetGuid, "PROVISIONING_PROFILE_SPECIFIER", "iOS Team Provisioning Profile: com.AFrame.AFrame");
-		project.SetBuildProperty(targetGuid, "DEVELOPMENT_TEAM", "5Y99JR9625");
+		project.SetBuildProperty(targetGuid, "CODE_SIGN_IDENTITY", "Apple Development");
+		// project.SetBuildProperty(targetGuid, "PROVISIONING_PROFILE", "14264716-3f96-4a9f-bd8c-dfb7eefca924");
+		project.SetBuildProperty(targetGuid, "PROVISIONING_PROFILE_SPECIFIER", "test_provision_profile");
+		project.SetBuildProperty(targetGuid, "DEVELOPMENT_TEAM", "296YK95RJ6");
 		project.SetBuildProperty(targetGuid, "IPHONEOS_DEPLOYMENT_TARGET", "8.0");
 
 		// 添加framework

@@ -143,6 +143,7 @@ public class UnityBuild
 			if (arg.StartsWith("identifier", StringComparison.OrdinalIgnoreCase)) 
 			{
 				settings.identifier = arg.Split('=')[1];
+				Debug.Log ("fuck" + settings.identifier);
 			} 
 			else if (arg.StartsWith("channel", StringComparison.OrdinalIgnoreCase)) 
 			{
@@ -177,7 +178,7 @@ public class UnityBuild
 		PlayerSettings.productName = settings.productName;
 		PlayerSettings.applicationIdentifier = settings.identifier;
 		PlayerSettings.bundleVersion = settings.bundleVersion;
-
+		Debug.Log ("fuck2" + PlayerSettings.applicationIdentifier);
 		PlayerSettings.statusBarHidden = true;
 		PlayerSettings.allowedAutorotateToLandscapeLeft = true;
 		PlayerSettings.allowedAutorotateToLandscapeRight = true;

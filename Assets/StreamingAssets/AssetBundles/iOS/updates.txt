@@ -28,3 +28,5 @@ assets/scenes/main
 lua/base_g
 lua_g
 manifest
+132271801019712810:
+prefabs/test/image

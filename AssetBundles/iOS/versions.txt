@@ -11,5 +11,5 @@ lua_g:8fb5fcac7b8184c0197e7a8128df217f
 manifest:bb2140ba8e14800b88d8b518f025b9bd
 prefabs/cube:bc49d4e8b62d67c8e33bd6927a59d394
 prefabs/logo:356b04399a7a81303ec2d8244ed307a1
-prefabs/test/image:09e4741180bccbc16216b3094aa4f4db
+prefabs/test/image:831a1f481a4e0c7a9cc96182f700cd80
 textures/bg:22d6cd4562e596da8bff6a5ac500da01
