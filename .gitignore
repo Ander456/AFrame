@@ -41,3 +41,4 @@ Temp/
 *.DS_Store
 obj/
 Publish/
+Assets/XLua/Gen/
