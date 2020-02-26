@@ -199,7 +199,7 @@ public class XClass : System.IDisposable
 		filePath = fPath;
 		if(!System.IO.File.Exists(filePath)) 
 		{
-			Debug.LogError( filePath +"路径下文件不存在" );
+			Debug.LogError(filePath +"路径下文件不存在");
 			return;
 		}
 	}
