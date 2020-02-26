@@ -15,13 +15,26 @@ echo "
 	build_type=${build_type}
 	"
 
+
+cd $project_path
+
+function gitopt() {
+	git prune
+	git fetch -p
+	git clean -dfq
+	git checkout -q .
+	git checkout ${git_branch}
+	git pull -q
+	git log -1
+}
+
+# gitopt
+
 timestamp=$(date +"%Y%m%d%H%M%S")
 
 log_path=$project_path/Publish/logs/Android/${timestamp}.log
 
 target=android_${timestamp}_${git_branch}.apk
-
-# sh ${project_path}/Tools/build/git.sh ${project_path} 
 
 echo "开始打包Android"
 
