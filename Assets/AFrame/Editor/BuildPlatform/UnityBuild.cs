@@ -218,4 +218,16 @@ public class UnityBuild
         int result = major * 10000 + minor * 100 + build;
 		return result;
     }
+
+	private static void BuildIOSAB()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+		Builder.Build();
+	}
+
+	private static void BuildAndroidAB()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		Builder.Build();
+	}
 }
