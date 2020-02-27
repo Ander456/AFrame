@@ -26,7 +26,7 @@ echo "android git 还原环境，拉到最新"
 
 cd ${project_path}
 
-gitopt
+# gitopt
 
 echo "\n开始生成Android 补丁，请耐心等待..."
 
