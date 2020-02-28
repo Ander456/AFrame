@@ -21,7 +21,9 @@ function gitopt() {
     git log -1
 }
 
-log_path=$project_path/Publish/logs/AB/${timestamp}.log
+timestamp=$(date +"%Y%m%d%H%M%S")
+
+log_path=$project_path/Publish/logs/AB/${platform}_${git_branch}_${timestamp}.log
 
 function android() {
     echo "****************** android **********************"
