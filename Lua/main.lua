@@ -150,4 +150,12 @@ print("lua main")
 -- --- test view
 -- UIManager = require("base.UIManager").new()
 -- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
-print("hahah")
+
+--- test audio
+-- AudioManager:PlaySound("Assets/Audios/kill.mp3")
+-- AudioManager:PlayBGM("Assets/Audios/bgm.mp3")
+-- print(AudioManager:GetVolume())
+-- AudioManager:SetVolume(0.5)
+-- print(AudioManager:GetVolume())
+
+print("hello")

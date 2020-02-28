@@ -60,6 +60,9 @@ public static class XLuaGenConfig
 		typeof(XAsset.SceneAssetAsync),
 		typeof(XAsset.WebAsset),
 
+		// AudioManager
+		typeof(AudioManager),
+
 		// BestHttp
 		typeof(BestHTTP.HTTPManager),
 		typeof(BestHTTP.HTTPRequest),
