@@ -6,7 +6,7 @@
 
 local LuaBehaviour = class("LuaBehaviour")
 
-local util = require 'core.util'
+local util = require 'framework.core.util'
 
 function LuaBehaviour:ctor(...)
     local comp = ...

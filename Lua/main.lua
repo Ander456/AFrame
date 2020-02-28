@@ -1,5 +1,4 @@
-require("core.init")
-require("net.init")
+require("framework.init")
 
 function Update()
 end
@@ -157,5 +156,8 @@ print("lua main")
 -- print(AudioManager:GetVolume())
 -- AudioManager:SetVolume(0.5)
 -- print(AudioManager:GetVolume())
+
+--- test ui manager
+UIManager:Push(require("CubeView"), 1,2,3,"abc")
 
 print("hello")
