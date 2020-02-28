@@ -63,15 +63,17 @@ xcodebuild archive -quiet -project Unity-iPhone.xcodeproj -scheme Unity-iPhone -
 
 echo "++++++++++++++ xcodebuild export +++++++++++++++++++"
 
-PLIST_PATH=${project_path}/Tools/build/ExportOptions.plist
+plist_path=${project_path}/Tools/build/ExportOptions.plist
 
-xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath ${build_path}/${target}  -exportOptionsPlist ${PLIST_PATH}
+ipa_path=${build_path}/${target}
 
-if [ ! -d "${build_path}/${target}" ]; then  
+xcodebuild -quiet -exportArchive -archivePath Unity-iPhone.xcarchive -exportPath $ipa_path  -exportOptionsPlist ${plist_path}
+
+if [ ! -d $ipa_path ]; then  
 	echo "not found build folfer, sorry"
 	exit 1
 fi
 
-cd ipa
+cd ipa_path
 
 mv Unity-iPhone.ipa ${target}
