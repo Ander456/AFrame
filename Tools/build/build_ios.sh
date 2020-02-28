@@ -74,6 +74,6 @@ if [ ! -d $ipa_path ]; then
 	exit 1
 fi
 
-cd ipa_path
+cd $ipa_path
 
 mv Unity-iPhone.ipa ${target}
