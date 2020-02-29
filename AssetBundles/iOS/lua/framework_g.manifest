@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 449349955
+CRC: 3895874554
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: db83004dd9f7b86a27f1e076d363e991
+    Hash: 1f1729b15cc52cea0d907aec342f3594
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Bytes/Lua/CubeView.lua.bytes
-- Assets/Bytes/Lua/main.lua.bytes
+- Assets/Bytes/Lua/framework/init.lua.bytes
 Dependencies: []

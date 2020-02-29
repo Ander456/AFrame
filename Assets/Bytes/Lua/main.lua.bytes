@@ -1,5 +1,4 @@
-require("core.init")
-require("net.init")
+require("framework.init")
 
 function Update()
 end
@@ -150,4 +149,15 @@ print("lua main")
 -- --- test view
 -- UIManager = require("base.UIManager").new()
 -- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
-print("hahah")
+
+--- test audio
+-- AudioManager:PlaySound("Assets/Audios/kill.mp3")
+-- AudioManager:PlayBGM("Assets/Audios/bgm.mp3")
+-- print(AudioManager:GetVolume())
+-- AudioManager:SetVolume(0.5)
+-- print(AudioManager:GetVolume())
+
+--- test ui manager
+UIManager:Push(require("CubeView"), 1,2,3,"abc")
+
+print("hello")

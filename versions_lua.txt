@@ -1,4 +1,4 @@
-/Users/mio/Downloads/AFrame/Lua/main.lua=132270178210000000
+/Users/mio/Downloads/AFrame/Lua/main.lua=132274208030000000
 /Users/mio/Downloads/AFrame/Lua/core/Dispatcher.lua=132264039270000000
 /Users/mio/Downloads/AFrame/Lua/core/LuaBehaviour.lua=132266607340000000
 /Users/mio/Downloads/AFrame/Lua/core/functions.lua=132266605220000000
@@ -29,3 +29,19 @@
 /Users/Alex/AFrame/Lua/net/tcp/PacketBuffer.lua=132269886370000000
 /Users/Alex/AFrame/Lua/net/tcp/TcpClient.lua=132269886370000000
 /Users/Alex/AFrame/Lua/base/View.lua=132269898400000000
+/Users/mio/Downloads/AFrame/Lua/CubeView.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/init.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/base/AudioManager.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/base/ResManager.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/base/UIManager.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/base/View.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/core/Dispatcher.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/core/LuaBehaviour.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/core/functions.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/core/util.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/init.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/http/api.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/http/http.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/luaprotobuf/protoc.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/tcp/PacketBuffer.lua=132274208030000000
+/Users/mio/Downloads/AFrame/Lua/framework/net/tcp/TcpClient.lua=132274208030000000
