@@ -41,3 +41,5 @@ lua/framework_g
 lua_g
 manifest
 prefabs/test/image
+132274219616668400:
+manifest

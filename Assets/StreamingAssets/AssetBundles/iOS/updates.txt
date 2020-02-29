@@ -30,3 +30,16 @@ lua_g
 manifest
 132271801019712810:
 prefabs/test/image
+132274213001692670:
+lua/framework/base_g
+lua/framework/core_g
+lua/framework/net/http_g
+lua/framework/net/luaprotobuf_g
+lua/framework/net/tcp_g
+lua/framework/net_g
+lua/framework_g
+lua_g
+manifest
+prefabs/test/image
+132274219616668400:
+manifest
