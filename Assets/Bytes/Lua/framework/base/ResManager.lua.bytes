@@ -14,4 +14,9 @@ function M.LoadSync(assetPath, typ)
     return asset
 end 
 
+function M.LoadScene(path, async, addictive)
+    local sceneAsset = Assets.LoadScene(path, async, addictive);
+    return sceneAsset
+end
+
 return M

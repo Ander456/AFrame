@@ -148,10 +148,6 @@ print("lua main")
 -- local render = ins:AddComponent(typeof(UE.SpriteRenderer))
 -- render.sprite = sp
 
--- --- test view
--- UIManager = require("base.UIManager").new()
--- UIManager:Load(require("base.View"), "Assets/Prefabs/Cube.prefab")
-
 --- test audio
 -- AudioManager:PlaySound("Assets/Audios/kill.mp3")
 -- AudioManager:PlayBGM("Assets/Audios/bgm.mp3")
@@ -159,10 +155,10 @@ print("lua main")
 -- AudioManager:SetVolume(0.5)
 -- print(AudioManager:GetVolume())
 
---- test ui manager
--- UIManager:Push(require("CubeView"), 1,2,3,"abc")
-
 --- test load scene
-local sceneAsset = Res.LoadScene("Assets/Scenes/Loading.unity")
-sceneAsset:Release()
+-- local sceneAsset = Res.LoadScene("Assets/Scenes/Loading.unity")
+-- sceneAsset:Release()
+
+
 UIManager:Push(require("Loading"))
+

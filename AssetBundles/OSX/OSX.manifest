@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 673634179
+CRC: 3834035800
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,42 +9,49 @@ AssetBundleManifest:
       Name: assets/scenes/main
       Dependencies: {}
     Info_2:
-      Name: atlas/test
-      Dependencies: {}
-    Info_3:
-      Name: lua/net_g
-      Dependencies: {}
-    Info_4:
-      Name: lua/core_g
-      Dependencies: {}
-    Info_5:
-      Name: lua/base_g
-      Dependencies: {}
-    Info_6:
-      Name: lua/net/tcp_g
-      Dependencies: {}
-    Info_7:
-      Name: lua/net/luaprotobuf_g
-      Dependencies: {}
-    Info_8:
-      Name: lua/net/http_g
-      Dependencies: {}
-    Info_9:
       Name: manifest
       Dependencies: {}
-    Info_10:
+    Info_3:
+      Name: prefabs/cube
+      Dependencies: {}
+    Info_4:
+      Name: prefabs/logo
+      Dependencies: {}
+    Info_5:
+      Name: atlas/test
+      Dependencies: {}
+    Info_6:
       Name: textures/bg
       Dependencies: {}
-    Info_11:
+    Info_7:
+      Name: audios/kill
+      Dependencies: {}
+    Info_8:
       Name: prefabs/test/image
       Dependencies:
         Dependency_0: textures/bg
+    Info_9:
+      Name: lua/framework_g
+      Dependencies: {}
+    Info_10:
+      Name: lua/framework/base_g
+      Dependencies: {}
+    Info_11:
+      Name: lua/framework/core_g
+      Dependencies: {}
     Info_12:
-      Name: prefabs/cube
+      Name: lua/framework/net_g
       Dependencies: {}
     Info_13:
-      Name: prefabs/logo
+      Name: lua/framework/net/http_g
       Dependencies: {}
     Info_14:
-      Name: audios/kill
+      Name: lua/framework/net/luaprotobuf_g
       Dependencies: {}
+    Info_15:
+      Name: lua/framework/net/tcp_g
+      Dependencies: {}
+    Info_16:
+      Name: prefabs/ui/loading
+      Dependencies:
+        Dependency_0: textures/bg

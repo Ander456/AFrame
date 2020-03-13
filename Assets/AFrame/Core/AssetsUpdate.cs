@@ -52,7 +52,7 @@ namespace XAsset
 
 		public Action updateNeed;
 
-		public Action<string, float> progress;
+		public Action<string, float, float> progress;
 
 		public Action<string> onError;
 
@@ -69,11 +69,6 @@ namespace XAsset
 				onError (e);
 			}
 			state = State.Error;
-		}
-
-		void OnProgress (string arg1, float arg2)
-		{
-			Debug.Log(string.Format ("{0:F0}%:{1}({2}/{3})", arg2 * 100, arg1, _downloadIndex, _downloads.Count));
 		}
 
 		void Clear ()
@@ -122,7 +117,6 @@ namespace XAsset
 				// 本地没有文件，直接更新
 				LoadVersions (string.Empty);
 			});
-			progress += OnProgress;
 			state = State.Checking;
 		}
 
@@ -152,7 +146,7 @@ namespace XAsset
 						}
 					} else {
 						if (progress != null) {
-							progress.Invoke (download.url, download.progress);
+							progress.Invoke (download.url, download.progress, (float)(_downloadIndex+1)/_downloads.Count);
 						}
 					}
 				}

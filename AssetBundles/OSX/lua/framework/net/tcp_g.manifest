@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2266279571
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ca43ba407ad14e5d9f42fb1fd32eba32
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bytes/Lua/framework/net/tcp/TcpClient.lua.bytes
+- Assets/Bytes/Lua/framework/net/tcp/PacketBuffer.lua.bytes
+Dependencies: []

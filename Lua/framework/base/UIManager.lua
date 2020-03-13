@@ -16,6 +16,24 @@ function M:Load(cls, assetPath, cb)
     end)
 end 
 
+function M:LoadSync(cls, assetPath)
+    local a =  Res.LoadSync(cls.assetPath, typeof(GameObject))
+    local prefab = a.asset
+    local go  = GameObject.Instantiate(prefab, self.root)  
+    go.name = prefab.name   
+    local ins = LuaManager.AddLuaComponent(go, cls)
+    ins:OnLoaded(a)
+    return ins
+end
+
+function M:PushSync(...)
+    local params = {...}
+    local cls = table.remove(params, 1)
+    local view = self:LoadSync(cls, cls.assetPath)
+    table.insert(self.stack, view)
+    view:OnOpen(table.unpack(params))
+end
+
 function M:Push(...)
     local params = {...}
     local cls = table.remove(params, 1)

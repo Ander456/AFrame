@@ -1,5 +1,7 @@
 require("framework.init")
 
+local util = require 'framework.core.util'
+
 function Update()
 end
 
@@ -158,6 +160,11 @@ print("lua main")
 -- print(AudioManager:GetVolume())
 
 --- test ui manager
-UIManager:Push(require("CubeView"), 1,2,3,"abc")
+-- UIManager:Push(require("CubeView"), 1,2,3,"abc")
 
-print("hello")
+--- test load scene
+-- local sceneAsset = Res.LoadScene("Assets/Scenes/Loading.unity")
+-- sceneAsset:Release()
+
+
+UIManager:Push(require("Loading"))

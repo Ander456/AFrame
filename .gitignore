@@ -41,4 +41,4 @@ Temp/
 *.DS_Store
 obj/
 Publish/
-Assets/XLua/
+Assets/XLua*

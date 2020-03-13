@@ -103,7 +103,7 @@ public static class XLuaGenConfig
 		typeof(Func<double, double, double>),
 		typeof(Action<string>),
 		typeof(Action<double>),
-		typeof(Action<string, float>),
+		typeof(Action<string, float, float>),
 		typeof(UnityEngine.Events.UnityAction),
 		typeof(System.Collections.IEnumerator)
 	};

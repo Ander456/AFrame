@@ -4,10 +4,10 @@ M.assetPath = "Assets/Prefabs/Cube.prefab"
 
 function M:Start()
     print(self.__cname, "Start")
-    self:StartCoroutine(function()
-        coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
-        self:Close()
-    end)
+    -- self:StartCoroutine(function()
+    --     coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
+    --     -- self:Close()
+    -- end)
 end
 
 function M:OnOpen(...)

@@ -12,6 +12,7 @@ function M:SetUp(param)
     self._complete = param.complete 
     self._onError = param.onError  
     self._onProgress = param.onProgress 
+    self._onUpdateNeed = param.onUpdateNeed
 end
 
 function M:Check()
@@ -19,6 +20,9 @@ function M:Check()
 end
 
 function M:onUpdateNeed()
+    if self._onUpdateNeed then
+        self._onUpdateNeed()
+    end
     self:downLoad()
 end
 
@@ -28,9 +32,9 @@ function M:onCompleted()
     end
 end
 
-function M:onProgress(name, progress)
+function M:onProgress(name, progress, total_progress)
     if self._onProgress then
-        self._onProgress(name, progress)
+        self._onProgress(name, progress, total_progress)
     end
 end
 
