@@ -64,16 +64,12 @@ namespace XAsset
 			if (onError != null) {
 				onError (e);
 			}
-
-			message = e;
 			state = State.Error;
 		}
 
-		string message = "click Check to start.";
-
 		void OnProgress (string arg1, float arg2)
 		{
-			message = string.Format ("{0:F0}%:{1}({2}/{3})", arg2 * 100, arg1, _downloadIndex, _downloads.Count);
+			Debug.Log(string.Format ("{0:F0}%:{1}({2}/{3})", arg2 * 100, arg1, _downloadIndex, _downloads.Count));
 		}
 
 		void Clear ()
@@ -87,7 +83,6 @@ namespace XAsset
 			_downloadIndex = 0;
 			_versions.Clear ();
 			_serverVersions.Clear ();
-			message = "click Check to start.";
 			state = State.Wait;
 
 			Versions.Clear (); 
@@ -154,102 +149,7 @@ namespace XAsset
 				}
 			}
 		}
-
-		string assetPath = "";
-
-		List<Asset> loadedAssets = new List<Asset> ();
-
-		void OnAssetLoaded (Asset asset)
-		{
-			if (asset.name.EndsWith (".prefab", StringComparison.CurrentCulture)) {
-				var go = Instantiate (asset.asset);
-				go.name = asset.asset.name;
-				asset.Require (go);
-				Destroy (go, 3);
-			}
-
-			loadedAssets.Add (asset);
-		}
-
-		private void OnGUI ()
-		{
-			using (var v = new GUILayout.VerticalScope ("AssetsUpdate Demo", "window")) {
-				switch (state) {
-				case State.Wait:
-					if (GUILayout.Button ("Check")) {
-						Check ();
-					}
-
-					break;
-
-				case State.WaitDownload:
-					if(GUILayout.Button("Download")){
-						Download ();
-					}
-					break;
-
-				case State.Completed:
-					if (GUILayout.Button ("Clear")) {
-						Clear (); 
-					} 
-					break;
-				default:
-					break;
-				}
-
-				GUILayout.Label (string.Format ("{0}:{1}", state, message));
-				if (state == State.Completed) {
-					GUILayout.Label ("AllBundleAssets:");
-					foreach (var item in Assets.bundleAssets) {
-						if (GUILayout.Button (item.Key)) {
-							assetPath = item.Key;
-						}
-					}
-
-					using (var h = new GUILayout.HorizontalScope ()) {
-						assetPath = GUILayout.TextField (assetPath, GUILayout.Width (256));
-						if (GUILayout.Button ("Load")) {
-							var asset = Assets.Load (assetPath, typeof(UnityEngine.Object));
-							asset.completed += OnAssetLoaded;
-						}
-
-						if (GUILayout.Button ("LoadAsync")) {
-							var asset = Assets.LoadAsync (assetPath, typeof(UnityEngine.Object));
-							asset.completed += OnAssetLoaded;
-						}
-
-						if (GUILayout.Button ("LoadScene")) {
-							var asset = Assets.LoadScene (assetPath, true, true);
-							asset.completed += OnAssetLoaded;
-						}
-					}
-
-					if (loadedAssets.Count > 0) {
-						if (GUILayout.Button ("UnloadAll")) {
-							for (int i = 0; i < loadedAssets.Count; i++) {
-								var item = loadedAssets [i];
-								item.Release ();
-							}
-
-							loadedAssets.Clear ();
-						}
-
-						for (int i = 0; i < loadedAssets.Count; i++) {
-							var item = loadedAssets [i];
-							using (var h = new GUILayout.HorizontalScope ()) {
-								GUILayout.Label (item.name);
-								if (GUILayout.Button ("Unload")) {
-									item.Release ();
-									loadedAssets.RemoveAt (i);
-									i--;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
+			
 		private void Complete ()
 		{
 			Versions.Save ();
@@ -284,7 +184,7 @@ namespace XAsset
 				}, OnError);
 				state = State.Completed;
 
-				message = string.Format ("{0} files has update.", _downloads.Count);
+				Debug.Log(string.Format ("{0} files has update.", _downloads.Count));
 				return;
 			}
 
@@ -292,7 +192,6 @@ namespace XAsset
 				completed ();
 			}
 
-			message = "nothing to update.";
 			state = State.Completed;
 		}
 
@@ -335,7 +234,7 @@ namespace XAsset
 					downloader.savePath = Utility.GetRelativePath4Update (Utility.GetPlatform ());
 					_downloads.Add (downloader);
 					state = State.WaitDownload;
-					message = string.Format ("检查到有 {0} 个文件需要更新，点 Download 开始更新。", _downloads.Count);
+					Debug.Log(string.Format ("检查到有 {0} 个文件需要更新", _downloads.Count));
 				}
 			};
 		}
