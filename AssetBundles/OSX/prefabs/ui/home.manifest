@@ -1,19 +1,31 @@
 ManifestFileVersion: 0
-CRC: 195038058
+CRC: 17762698
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: eb49364cfdd06f35b31c0a471c46dd5c
+    Hash: d919a48954f77592c5b7121efd4e414b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d960a7481d3b4d4093ef532804bbb0c1
+    Hash: 229201310e819be8d56ae4a6d3da20bb
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -22,6 +34,6 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Prefabs/Test/Image.prefab
+- Assets/Prefabs/UI/Home.prefab
 Dependencies:
 - /Users/mio/Downloads/AFrame/AssetBundles/OSX/textures/bg

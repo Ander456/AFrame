@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3834035800
+CRC: 1531992883
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -27,31 +27,31 @@ AssetBundleManifest:
       Name: audios/kill
       Dependencies: {}
     Info_8:
-      Name: prefabs/test/image
-      Dependencies:
-        Dependency_0: textures/bg
-    Info_9:
       Name: lua/framework_g
       Dependencies: {}
-    Info_10:
+    Info_9:
       Name: lua/framework/base_g
       Dependencies: {}
-    Info_11:
+    Info_10:
       Name: lua/framework/core_g
       Dependencies: {}
-    Info_12:
+    Info_11:
       Name: lua/framework/net_g
       Dependencies: {}
-    Info_13:
+    Info_12:
       Name: lua/framework/net/http_g
       Dependencies: {}
-    Info_14:
+    Info_13:
       Name: lua/framework/net/luaprotobuf_g
       Dependencies: {}
-    Info_15:
+    Info_14:
       Name: lua/framework/net/tcp_g
       Dependencies: {}
-    Info_16:
+    Info_15:
       Name: prefabs/ui/loading
+      Dependencies:
+        Dependency_0: textures/bg
+    Info_16:
+      Name: prefabs/ui/home
       Dependencies:
         Dependency_0: textures/bg

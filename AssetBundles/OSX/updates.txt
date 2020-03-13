@@ -135,3 +135,12 @@ lua_g
 lua_g
 132285693569309540:
 lua_g
+132285725308158720:
+assets/scenes/main
+lua/framework/base_g
+lua/framework/core_g
+lua_g
+manifest
+prefabs/cube
+prefabs/logo
+prefabs/ui/home
