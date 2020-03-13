@@ -7,12 +7,17 @@ using XLua;
 [LuaCallCSharp]
 public class LuaManager
 {
-	public static LuaEnv luaEnv = new LuaEnv();
+	public static LuaEnv luaEnv;
     private static Dictionary<string, Asset> assets = new Dictionary<string, Asset>();
 	private delegate LuaTable LuaCtor(LuaBehaviour comp);
 
     public static void Init(Action succes)
     {
+		if (luaEnv != null) 
+			Dispose();
+
+		luaEnv = new LuaEnv();
+
         Action onSuccess = delegate
         {
 			luaEnv.AddLoader(LuaLoader);

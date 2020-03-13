@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using XLua;
 
 public class LuaMain : MonoBehaviour
 {
@@ -11,6 +10,12 @@ public class LuaMain : MonoBehaviour
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
+		Init();
+	}
+
+	public void Init()
+	{
+		Clear();
 		LuaManager.Init(OnInited);
 	}
 
@@ -44,11 +49,16 @@ public class LuaMain : MonoBehaviour
 			_lateUpdateFunc();
 		}
 	}
-		
-	private void OnDestroy()
+
+	private void Clear()
 	{
 		_updateFunc = null;
 		_lateUpdateFunc = null;
 		_fixedUpdateFunc = null;
+	}
+		
+	private void OnDestroy()
+	{
+		Clear();
 	}
 }

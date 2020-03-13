@@ -122,6 +122,11 @@ namespace XAsset
 			state = State.Checking;
 		}
 
+		private void Awake()
+		{
+			DontDestroyOnLoad(gameObject);
+		}
+
 		private void Start ()
 		{
 			state = State.Wait;
