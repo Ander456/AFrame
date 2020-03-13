@@ -29,9 +29,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using XLua;
 
 namespace XAsset
 {
+	[LuaCallCSharp]
 	public class AssetsUpdate : MonoBehaviour
 	{
 		public enum State
@@ -48,14 +50,16 @@ namespace XAsset
 
 		public Action completed;
 
+		public Action updateNeed;
+
 		public Action<string, float> progress;
 
 		public Action<string> onError;
 
 		private Dictionary<string, string> _versions = new Dictionary<string, string> ();
 		private Dictionary<string, string> _serverVersions = new Dictionary<string, string> ();
-		private readonly List<Download> _downloads = new List<Download> ();
-		private int _downloadIndex;
+		public readonly List<Download> _downloads = new List<Download> ();
+		public int _downloadIndex;
 
 		[SerializeField] string versionsTxt = "versions.txt";
 
@@ -92,7 +96,7 @@ namespace XAsset
 				File.Delete (path);
 		}
 
-		void Check ()
+		public void Check ()
 		{
 			Assets.Initialize (delegate {
 				var path = Utility.GetRelativePath4Update (versionsTxt);
@@ -200,7 +204,7 @@ namespace XAsset
 			state = State.Completed;
 		}
 
-		private void Download ()
+		public void Download ()
 		{
 			_downloadIndex = 0;
 			_downloads [_downloadIndex].Start ();
@@ -240,6 +244,10 @@ namespace XAsset
 					_downloads.Add (downloader);
 					state = State.WaitDownload;
 					Debug.Log(string.Format ("检查到有 {0} 个文件需要更新", _downloads.Count));
+
+					if (updateNeed != null){
+						updateNeed();
+					}
 				}
 			};
 		}

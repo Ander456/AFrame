@@ -162,3 +162,7 @@ print("lua main")
 --- test ui manager
 -- UIManager:Push(require("CubeView"), 1,2,3,"abc")
 
+--- test load scene
+local sceneAsset = Res.LoadScene("Assets/Scenes/Loading.unity")
+sceneAsset:Release()
+UIManager:Push(require("Loading"))

@@ -59,7 +59,6 @@ public static class XLuaGenConfig
 		typeof(XAsset.SceneAsset),
 		typeof(XAsset.SceneAssetAsync),
 		typeof(XAsset.WebAsset),
-		typeof(XAsset.AssetsUpdate),
 
 		// AudioManager
 		typeof(AudioManager),
@@ -104,6 +103,7 @@ public static class XLuaGenConfig
 		typeof(Func<double, double, double>),
 		typeof(Action<string>),
 		typeof(Action<double>),
+		typeof(Action<string, float>),
 		typeof(UnityEngine.Events.UnityAction),
 		typeof(System.Collections.IEnumerator)
 	};

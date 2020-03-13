@@ -2,12 +2,13 @@ local M = class("UIManager")
 
 function M:ctor()
     self.stack = {}
+    self.root = GameObject.Find("UI/UIRoot").transform
 end
 
 function M:Load(cls, assetPath, cb)
     Res.Load(assetPath, typeof(GameObject), function(a)
         local prefab = a.asset
-        local go  = GameObject.Instantiate(prefab)  
+        local go  = GameObject.Instantiate(prefab, self.root)  
         go.name = prefab.name   
         local ins = LuaManager.AddLuaComponent(go, cls)
         ins:OnLoaded(a)
