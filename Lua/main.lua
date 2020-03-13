@@ -1,7 +1,5 @@
 require("framework.init")
 
-local util = require 'framework.core.util'
-
 function Update()
 end
 
@@ -162,3 +160,4 @@ print("lua main")
 
 UIManager:Push(require("Loading"))
 
+print("haha")

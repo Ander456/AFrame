@@ -32,7 +32,7 @@ namespace XAsset.Editor
 {
     public class Settings : ScriptableObject
     {
-		public bool runtimeMode = false;
+		public bool runtimeMode = true;
         public bool localServer = false;
         public string assetRootPath = "Assets/XAsset/Demo/";
     }

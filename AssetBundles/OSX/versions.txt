@@ -8,10 +8,10 @@ lua/framework/net/luaprotobuf_g:2dca74cac7e12eb635674c2d85d6178a
 lua/framework/net/tcp_g:ca43ba407ad14e5d9f42fb1fd32eba32
 lua/framework/net_g:34356198f69173e28537272318316975
 lua/framework_g:289caf68cadd2599d0c106d5dbe1440a
-lua_g:f395e6749c5036a464ba1ad7788c1ca2
+lua_g:640a6f9579c97240f2959c3ce14e85f3
 manifest:255ec982362263a085cf72ad36395ac7
 prefabs/cube:e7e3449aa4d03254c1586d304cc5775b
 prefabs/logo:df5f208c0c5fbd2e233cf9b2ee2a5ebf
 prefabs/ui/home:d919a48954f77592c5b7121efd4e414b
-prefabs/ui/loading:180ee39bc0497ef75ef0283c880f7bac
+prefabs/ui/loading:bca266bc169ec006e809f19a8c34b696
 textures/bg:c0c6f26e7effc59bdb8aefac241e9a12
