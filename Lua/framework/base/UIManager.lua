@@ -27,7 +27,9 @@ end
 
 function M:Pop()
     local view = table.remove(self.stack, #self.stack)
-    view:Close()
+    if view then
+        view:Close()
+    end
     --- add logic ex: show the below of the top
     return view
 end

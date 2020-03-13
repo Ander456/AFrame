@@ -19,6 +19,7 @@ function M:Close()
     self:OnClose()
     GameObject.Destroy(self.gameObject)
     self.asset:Release()
+    self.asset = nil
     UIManager:Remove(self)
 end 
 

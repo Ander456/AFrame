@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System;
+using XLua;
 
+[LuaCallCSharp]
 public class LuaMain : MonoBehaviour
 {
 	Action _updateFunc = null;
 	Action _lateUpdateFunc = null;
 	Action _fixedUpdateFunc = null;
+
+	internal static float lastGCTime = 0;
+	internal const float GCInterval = 1;//1 second
 
 	void Start()
 	{
@@ -15,7 +20,6 @@ public class LuaMain : MonoBehaviour
 
 	public void Init()
 	{
-		Clear();
 		LuaManager.Init(OnInited);
 	}
 
@@ -29,28 +33,28 @@ public class LuaMain : MonoBehaviour
 	private void Update()
 	{
 		if (_updateFunc != null)
-		{
 			_updateFunc();
+		
+		if (Time.time - LuaMain.lastGCTime > GCInterval) {
+			LuaMain.lastGCTime = Time.time;
+			if (LuaManager.luaEnv != null)
+				LuaManager.luaEnv.Tick();
 		}
 	}
 
 	private void FixedUpdate()
 	{
 		if (_fixedUpdateFunc != null)
-		{
 			_fixedUpdateFunc();
-		}
 	}
 
 	private void LateUpdate()
 	{
 		if (_lateUpdateFunc != null)
-		{
 			_lateUpdateFunc();
-		}
 	}
 
-	private void Clear()
+	public void Clear()
 	{
 		_updateFunc = null;
 		_lateUpdateFunc = null;

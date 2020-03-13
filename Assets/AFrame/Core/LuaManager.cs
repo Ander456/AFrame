@@ -13,23 +13,18 @@ public class LuaManager
 
     public static void Init(Action succes)
     {
-		if (luaEnv != null) 
-			Dispose();
-
-		luaEnv = new LuaEnv();
-
-        Action onSuccess = delegate
-        {
-			luaEnv.AddLoader(LuaLoader);
-			OnInited(succes);
-        };
-
-        Action<string> onError = delegate (string e)
-        {
-            Debug.LogError(e);
-        };
-
-        Assets.Initialize(onSuccess, onError);
+		if (luaEnv == null) 
+		{
+			luaEnv = new LuaEnv ();
+			Action onSuccess = delegate {
+				luaEnv.AddLoader (LuaLoader);
+				OnInited (succes);
+			};
+			Action<string> onError = delegate (string e) {
+				Debug.LogError (e);
+			};
+			Assets.Initialize (onSuccess, onError);
+		}
     }
 
     public static void Clear()
@@ -44,10 +39,12 @@ public class LuaManager
     public static void Dispose()
     {
         Clear();
-
-        luaEnv.Dispose();
-        luaEnv = null;
-        Debug.Log("[LuaManager]Dispose");
+		if (luaEnv != null)
+		{
+			luaEnv.Dispose();
+			luaEnv = null;
+			Debug.Log ("[LuaManager]Dispose");
+		}
     }
 
     public static void OnInited(Action cb)

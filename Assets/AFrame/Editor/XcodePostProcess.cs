@@ -12,13 +12,12 @@ using UnityEngine;
 /// </summary>
 public class XcodePostProcess 
 {
-
 	[PostProcessBuildAttribute(1)]
 	public static void OnPostProcessBuild(BuildTarget buildTarget, string pathToBuiltProject)
 	{
 		// 只处理IOS工程， pathToBuildProject会传入导出的ios工程的根目录
 		if (buildTarget != BuildTarget.iOS)
-		        return;
+		    return;
 
 		// 创建工程设置对象
 		var projectPath = pathToBuiltProject + "/Unity-iPhone.xcodeproj/project.pbxproj";
@@ -269,5 +268,6 @@ public class XClass : System.IDisposable
 
 	public void Dispose()
 	{
+		
 	}
 }
