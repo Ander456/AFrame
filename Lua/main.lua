@@ -162,4 +162,3 @@ print("lua main")
 --- test ui manager
 -- UIManager:Push(require("CubeView"), 1,2,3,"abc")
 
---- tet restart
