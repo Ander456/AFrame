@@ -33,6 +33,12 @@ function M:Find(path)
     return trans
 end
 
+function M:OnClick(path, func)
+    local btn = self:Find(path)
+    btn:GetComponent("Button").onClick:AddListener(func)
+    return btn
+end
+
 function M:SetParent(parent)
     self.gameObject.transform:SetParent(parent, false)
 end

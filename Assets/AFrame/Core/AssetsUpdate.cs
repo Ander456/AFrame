@@ -1,29 +1,3 @@
-//
-// AssetsUpdate.cs
-//
-// Author:
-//       fjy <jiyuan.feng@live.com>
-//
-// Copyright (c) 2019 fjy
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -58,8 +32,8 @@ namespace XAsset
 
 		private Dictionary<string, string> _versions = new Dictionary<string, string> ();
 		private Dictionary<string, string> _serverVersions = new Dictionary<string, string> ();
-		public readonly List<Download> _downloads = new List<Download> ();
-		public int _downloadIndex;
+		private readonly List<Download> _downloads = new List<Download> ();
+		private int _downloadIndex;
 
 		[SerializeField] string versionsTxt = "versions.txt";
 
@@ -71,6 +45,9 @@ namespace XAsset
 			state = State.Error;
 		}
 
+		/// <summary>
+		/// Clear the update path
+		/// </summary>
 		void Clear ()
 		{
 			var dir = Path.GetDirectoryName (Utility.updatePath);
@@ -118,11 +95,6 @@ namespace XAsset
 				LoadVersions (string.Empty);
 			});
 			state = State.Checking;
-		}
-
-		private void Awake()
-		{
-			DontDestroyOnLoad(gameObject);
 		}
 
 		private void Start ()
@@ -258,6 +230,17 @@ namespace XAsset
 					}
 				}
 			}
+		}
+
+		/// <summary>
+		/// clear the action cause we probably c# delegate catch lua ref
+		/// </summary>
+		private void OnDestroy()
+		{
+			completed = null;
+			updateNeed = null;
+			onError = null;
+			progress = null;
 		}
 	}
 }

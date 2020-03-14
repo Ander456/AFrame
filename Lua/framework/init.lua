@@ -2,7 +2,6 @@
 UE = CS.UnityEngine
 GameObject = UE.GameObject
 Assets = CS.XAsset.Assets
-AssetsUpdater = CS.XAsset.AssetsUpdate
 LuaManager = CS.LuaManager
 
 CSAudioManager = CS.AudioManager
@@ -12,7 +11,6 @@ CSAudioManager = CS.AudioManager
 require("framework.core.functions")
 Dispatcher = require("framework.core.Dispatcher")
 LuaBehaviour = require("framework.core.LuaBehaviour")
-Updater = require("framework.core.updater").new()
 
 --- base
 Res = require("framework.base.ResManager")

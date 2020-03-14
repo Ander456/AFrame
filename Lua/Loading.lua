@@ -3,30 +3,27 @@ local M = class("Loading", View)
 M.assetPath = "Assets/Prefabs/UI/loading.prefab"
 
 function M:Awake()
+    self.updater = self.gameObject:GetComponent(typeof(CS.XAsset.AssetsUpdate))
+    self.updater.updateNeed = handler(self, self.onUpdateNeed)
+    self.updater.completed = handler(self, self.onCompleted)
+    self.updater.progress = handler(self, self.onProgress)
+    self.updater.onError = handler(self, self.onError)
+
     self.slider = self:Find("Slider"):GetComponent(typeof(UE.UI.Slider))
     self.slider.gameObject:SetActive(false)
 end
 
 function M:Start()
-    Updater:SetUp({
-        complete = handler(self, self.onCompleted),
-        onError = handler(self, self.onError),
-        onProgress = handler(self, self.onProgress),
-        onUpdateNeed = handler(self, self.onUpdateNeed)
-    })
-    Updater:Check()
+    self.updater:Check()
 end
 
 function M:onCompleted()
     print("Assets update complete .")
     self:StartCoroutine(function()
         coroutine.yield(CS.UnityEngine.WaitForSeconds(1))
-        local sceneAsset = Res.LoadScene("Assets/Scenes/Home.unity", true)
-        while not sceneAsset.isDone do
-            print(sceneAsset.progress)
-            coroutine.yield()
-        end
-        self:Close()
+        local lm = GameObject.Find("LuaMain"):GetComponent(typeof(CS.LuaMain))
+        local t = {"Scenes/Start", "Scenes/Home"}
+        lm:ResetLuaAndLoadScene(t[math.random(1, 2)])
         UIManager:PushSync(require("Home"))
     end)
 end
@@ -41,6 +38,7 @@ end
 
 function M:onUpdateNeed()
     self.slider.gameObject:SetActive(true)
+    self.updater:Download()
 end
 
 return M

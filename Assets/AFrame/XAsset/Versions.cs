@@ -43,6 +43,8 @@ namespace XAsset
 
 		public static void Load ()
 		{
+			data.Clear();
+
 			var path = string.Format ("{0}{1}", Utility.updatePath, appVersionFile);
 			if (File.Exists (path)) {
 				var ver = new System.Version (File.ReadAllText (path));
