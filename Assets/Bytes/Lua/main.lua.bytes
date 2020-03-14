@@ -1,14 +1,5 @@
 require("framework.init")
 
-function Update()
-end
-
-function LateUpdate()
-end
-
-function FixedUpdate()
-end
-
 print("lua main")
 
 -- --- test rapidjson
@@ -157,7 +148,11 @@ print("lua main")
 -- local sceneAsset = Res.LoadScene("Assets/Scenes/Loading.unity")
 -- sceneAsset:Release()
 
+--- test ui && btn
+-- UIManager:Push(require("Home"))
 
+--- test update && reset lua env
 UIManager:Push(require("Loading"))
 
-print("haha")
+
+

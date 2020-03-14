@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 17762698
+CRC: 3058856266
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d919a48954f77592c5b7121efd4e414b
+    Hash: 85538751b30fc0956ec0e67f341cc198
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 229201310e819be8d56ae4a6d3da20bb
+    Hash: 8d8506214867557c4e9ac76af195da86
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,6 +17,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
@@ -36,4 +38,5 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/UI/Home.prefab
 Dependencies:
+- /Users/mio/Downloads/AFrame/AssetBundles/OSX/atlas/test
 - /Users/mio/Downloads/AFrame/AssetBundles/OSX/textures/bg

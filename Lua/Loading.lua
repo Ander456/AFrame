@@ -1,6 +1,6 @@
 local M = class("Loading", View)
 
-M.assetPath = "Assets/Prefabs/UI/loading.prefab"
+M.assetPath = "Assets/Prefabs/UI/Loading.prefab"
 
 function M:Awake()
     self.updater = self.gameObject:GetComponent(typeof(CS.XAsset.AssetsUpdate))

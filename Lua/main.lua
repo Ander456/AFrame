@@ -152,7 +152,7 @@ print("lua main")
 -- UIManager:Push(require("Home"))
 
 --- test update && reset lua env
--- UIManager:Push(require("Loading"))
+UIManager:Push(require("Loading"))
 
 
 

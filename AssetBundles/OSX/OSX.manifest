@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2305436913
+CRC: 2468083548
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -54,4 +54,5 @@ AssetBundleManifest:
     Info_16:
       Name: prefabs/ui/home
       Dependencies:
-        Dependency_0: textures/bg
+        Dependency_0: atlas/test
+        Dependency_1: textures/bg
