@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1085923580
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bb2e35a2ae2127a1e1382a65eaca2bb8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Audios/kill.mp3
+Dependencies: []
