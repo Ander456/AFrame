@@ -32,6 +32,7 @@ public class LuaMain : MonoBehaviour
 
 	IEnumerator DoResetLuaAndLoadScene(string name)
 	{
+		yield return new WaitForEndOfFrame();
 		Clear();
 		var ui = GameObject.Find("UI/UIRoot");
 		var objs = ui.GetComponentsInChildren<LuaBehaviour>(true);
@@ -39,7 +40,6 @@ public class LuaMain : MonoBehaviour
 		{
 			GameObject.DestroyImmediate(obj.gameObject);
 		}
-		yield return new WaitForEndOfFrame();
 		LuaManager.Dispose();
 		LuaManager.Init(OnInited);
 		SceneManager.LoadScene(name);

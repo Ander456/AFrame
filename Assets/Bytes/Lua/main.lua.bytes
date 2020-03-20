@@ -1,5 +1,17 @@
 require("framework.init")
 
+function Update()
+    print(UE.Time.deltaTime)
+end
+
+function LateUpdate()
+    -- body
+end
+
+function FixedUpdate()
+    -- body
+end
+
 print("lua main")
 
 -- --- test rapidjson

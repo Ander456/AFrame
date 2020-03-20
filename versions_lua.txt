@@ -13,7 +13,7 @@
 /Users/mio/Downloads/AFrame/Lua/net/luaprotobuf/protoc.lua=132264882350000000
 /Users/mio/Downloads/AFrame/Lua/net/tcp/PacketBuffer.lua=132264892530000000
 /Users/mio/Downloads/AFrame/Lua/net/tcp/TcpClient.lua=132264983720000000
-/Users/Alex/AFrame/Lua/main.lua=132289864330000000
+/Users/Alex/AFrame/Lua/main.lua=132290752790000000
 /Users/Alex/AFrame/Lua/base/ResManager.lua=132269886370000000
 /Users/Alex/AFrame/Lua/base/UIManager.lua=132269886370000000
 /Users/Alex/AFrame/Lua/base/view.lua=132269886370000000
