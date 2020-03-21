@@ -2,6 +2,15 @@ require("framework.init")
 
 print("lua main")
 
+Schedulers = {}
+
+function Update()
+    local dt = UE.Time.deltaTime
+    for index, schedule in ipairs(Schedulers) do
+        schedule:update(dt)
+    end
+end
+
 -- --- test rapidjson
 -- local t = {a=1,b=2,c="33"}
 -- print(json.encode(t))
@@ -154,5 +163,37 @@ print("lua main")
 --- test update && reset lua env
 -- UIManager:Push(require("Loading"))
 
+--- test timer
+local timer = Timer.new()
+table.insert(Schedulers, timer)
+-- UIManager:Push(require("Home"))
+-- local id = timer:schedule(1, function()
+--     print("haha")
+-- end)
+-- timer:delay(5, function()
+--     print("delay")
+--     timer:unschedule(id)
+-- end)
+
+--- test change layer to hide ui
+-- local flag = false
+-- timer:schedule(3, function()
+--     local v = UIManager:Top()
+--     if flag then
+--         v.gameObject.layer = 5
+--         flag = false
+--     else
+--         v.gameObject.layer = 3
+--         flag = true
+--     end
+-- end)
+
+--- test auto show hide by layer
+UIManager:Push(require("Store"))
+UIManager:Push(require("Home"))
+UIManager:Push(require("Setting"))
+timer:delay(3, function()
+    -- UIManager:Pop()
+end)
 
 

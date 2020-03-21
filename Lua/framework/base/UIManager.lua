@@ -1,5 +1,8 @@
 local M = class("UIManager")
 
+local LAYER_UI = 5
+local LAYER_NULL = 3
+
 function M:ctor()
     self.stack = {}
     self.root = GameObject.Find("UI/UIRoot").transform
@@ -32,15 +35,16 @@ function M:PushSync(...)
     local view = self:LoadSync(cls, cls.assetPath)
     table.insert(self.stack, view)
     view:OnOpen(table.unpack(params))
+    return view
 end
 
 function M:Push(...)
     local params = {...}
     local cls = table.remove(params, 1)
     self:Load(cls, cls.assetPath, function(view)
+        self:Hide(self:Top())
         table.insert(self.stack, view)
         view:OnOpen(table.unpack(params))
-        --- add logci ex: hide below fo the top
     end)
 end
 
@@ -49,15 +53,44 @@ function M:Pop()
     if view then
         view:Close()
     end
-    --- add logic ex: show the below of the top
+    self:Show(self:Top())
     return view
 end
 
 function M:Remove(view)
+    local idx = -1
+    local len = #self.stack
     for index = #self.stack, 1, -1 do
         if self.stack[index] == view then
             table.remove(self.stack, index)
+            idx = index
         end
+    end
+    if idx == len then
+        self:Show(self:Top())
+    end
+end
+
+function M:Top()
+    return self.stack[#self.stack]
+end
+
+function M:Bottom()
+    return self.stack[1]
+end
+
+function M:Hide(view)
+    if #self.stack == 1 then
+        return
+    end
+    if view then
+        view.gameObject.layer = LAYER_NULL
+    end
+end
+
+function M:Show(view)
+    if view then
+        view.gameObject.layer = LAYER_UI
     end
 end
 
