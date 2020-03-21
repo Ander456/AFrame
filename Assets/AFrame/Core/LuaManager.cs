@@ -112,13 +112,12 @@ public class LuaManager
 		}
 	}
 
-	public static LuaTable GetLuaComponent(GameObject go, LuaTable table)
+	public static LuaTable GetLuaComponent(GameObject go, string name)
 	{
 		LuaBehaviour[] comps = go.GetComponents<LuaBehaviour>();
-		string tableStr = table.ToString();
 		for(int i = 0; i < comps.Length;i++)
 		{
-			if(string.Equals(tableStr, comps[i].luaTable.ToString()))
+			if(string.Equals(name, comps[i].luaScript))
 			{
 				return comps[i].luaTable;
 			}

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 29083814
+CRC: 3406679836
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 60518b2dfa49ca5f6f26065cc7492a24
+    Hash: af62028a551fd66e46757ab52af33624
   TypeTreeHash:
     serializedVersion: 2
     Hash: c27b3ee5270669ef99e4c18e83215a69
@@ -40,4 +40,4 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/UI/Loading.prefab
 Dependencies:
-- /Users/Alex/AFrame/AssetBundles/OSX/textures/bg
+- /Users/mio/Downloads/AFrame/AssetBundles/OSX/textures/bg

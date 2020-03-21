@@ -10,6 +10,7 @@ CSAudioManager = CS.AudioManager
 --- core
 require("framework.core.functions")
 Dispatcher = require("framework.core.Dispatcher")
+Timer = require("framework.core.timer")
 LuaBehaviour = require("framework.core.LuaBehaviour")
 
 --- base

@@ -48,31 +48,7 @@ namespace XAsset.Editor
         {
             EditorUtility.ClearProgressBar();
             var settings = BuildScript.GetSettings();
-            if (settings.localServer)
-            {
-                bool isRunning = LaunchLocalServer.IsRunning();
-                if (!isRunning)
-                {
-                    LaunchLocalServer.Run();
-                }
-                Utility.dataPath = string.Empty;
-                var manifest = BuildScript.GetManifest();
-                if (string.IsNullOrEmpty(manifest.downloadURL))
-                {
-                    manifest.downloadURL = "http://127.0.0.1:7888/";
-                    EditorUtility.SetDirty(manifest);
-                    AssetDatabase.SaveAssets();
-                }
-            }
-            else
-            {
-                bool isRunning = LaunchLocalServer.IsRunning();
-                if (isRunning)
-                {
-                    LaunchLocalServer.KillRunningAssetBundleServer();
-                }
-                Utility.dataPath = System.Environment.CurrentDirectory;
-            }
+            Utility.dataPath = System.Environment.CurrentDirectory;
             Utility.downloadURL = BuildScript.GetManifest().downloadURL;
             Utility.assetBundleMode = settings.runtimeMode;
             Utility.getPlatformDelegate = BuildScript.GetPlatformName;

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3561860894
+CRC: 3058856266
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f49cff4def52fc8ca472cb9a7c3311f7
+    Hash: 85538751b30fc0956ec0e67f341cc198
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8d8506214867557c4e9ac76af195da86
@@ -38,5 +38,5 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/UI/Home.prefab
 Dependencies:
-- /Users/Alex/AFrame/AssetBundles/OSX/atlas/test
-- /Users/Alex/AFrame/AssetBundles/OSX/textures/bg
+- /Users/mio/Downloads/AFrame/AssetBundles/OSX/atlas/test
+- /Users/mio/Downloads/AFrame/AssetBundles/OSX/textures/bg

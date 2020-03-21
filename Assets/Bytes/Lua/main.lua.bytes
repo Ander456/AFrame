@@ -1,15 +1,11 @@
 require("framework.init")
 
+LuaComponents = {}
+
 function Update()
-    print(UE.Time.deltaTime)
-end
-
-function LateUpdate()
-    -- body
-end
-
-function FixedUpdate()
-    -- body
+    for key, comp in pairs(LuaComponents) do
+        comp:Update()
+    end
 end
 
 print("lua main")
@@ -164,7 +160,18 @@ print("lua main")
 -- UIManager:Push(require("Home"))
 
 --- test update && reset lua env
-UIManager:Push(require("Loading"))
+-- UIManager:Push(require("Loading"))
 
+--- test pure luacomponent
+env = GameObject.Find("LuaMain"):GetComponent("LuaMain")
+local asset = Assets.LoadAsync("Assets/Prefabs/Cube.prefab", typeof(GameObject))
+asset.completed = function(a)
+    local prefab = a.asset
+    local go  = GameObject.Instantiate(prefab)
+    go.name = prefab.name
+    local c = require("framework.core.LuaComponent").new(go)
+    c:Awake()
+    c:Start()
+end
 
 
