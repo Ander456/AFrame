@@ -12,6 +12,7 @@ require("framework.core.functions")
 Dispatcher = require("framework.core.Dispatcher")
 Timer = require("framework.core.timer")
 LuaBehaviour = require("framework.core.LuaBehaviour")
+DBind = require("framework.core.dataBinding")
 
 --- base
 Res = require("framework.base.ResManager")
