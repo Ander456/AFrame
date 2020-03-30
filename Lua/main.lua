@@ -189,8 +189,8 @@ table.insert(Schedulers, timer)
 -- end)
 
 --- test auto show hide by layer
-UIManager:Push(require("Store"))
 UIManager:Push(require("Home"))
+UIManager:Push(require("Store"))
 UIManager:Push(require("Setting"))
 timer:delay(3, function()
     -- UIManager:Pop()

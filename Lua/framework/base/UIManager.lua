@@ -45,6 +45,7 @@ function M:Push(...)
         self:Hide(self:Top())
         table.insert(self.stack, view)
         view:OnOpen(table.unpack(params))
+        self:tweenOpen(view)
     end)
 end
 
@@ -92,6 +93,14 @@ function M:Show(view)
     if view then
         view.gameObject.layer = LAYER_UI
     end
+end
+
+function M:tweenOpen(view)
+    if view.class.openAnim == -1 then
+        return
+    end
+    view.transform.localScale = UE.Vector3.zero
+    view.transform:DOScale(1, 0.3)
 end
 
 return M
