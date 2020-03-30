@@ -64,7 +64,7 @@ public static class XLuaGenConfig
 		// AudioManager
 		typeof(AudioManager),
 
-		// BestHttp
+		// BestHTTP
 		typeof(BestHTTP.HTTPManager),
 		typeof(BestHTTP.HTTPRequest),
 		typeof(BestHTTP.HTTPResponse),
