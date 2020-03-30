@@ -81,7 +81,7 @@ function M:Bottom()
 end
 
 function M:Hide(view)
-    if #self.stack == 1 then
+    if #self.stack <= 1 then
         return
     end
     if view then
@@ -91,6 +91,9 @@ function M:Hide(view)
 end
 
 function M:Show(view)
+    if #self.stack <= 1 then
+        return
+    end
     if view then
         view.gameObject.layer = LAYER_UI
         self:interactable(view, true)
@@ -99,7 +102,7 @@ end
 
 function M:interactable(view, flag)
     local canvasGroup = view.gameObject:GetComponent(typeof(UE.CanvasGroup))
-    if canvasGroup then
+    if canvasGroup and not IsNull(canvasGroup) then
         canvasGroup.interactable = flag
     end
 end
