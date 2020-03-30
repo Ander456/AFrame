@@ -41,7 +41,7 @@ local bind
 bind = function(ui, t, k, f)
 	local cb
 	cb = function( ... )
-		if not isNull(ui) then
+		if not IsNull(ui) then
 			f(...)
 		else
 			t.__bind__[k][cb] = nil

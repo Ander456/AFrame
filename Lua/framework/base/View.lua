@@ -23,12 +23,17 @@ function M:Close()
     UIManager:Remove(self)
 end 
 
-function M:Find(path)
+function M:Find(path, typ)
     local trans
     if path == nil then
         trans = self.transform
     else
         trans = self.transform:Find(path)
+    end
+    local component
+    if typ ~= nil then
+        component = trans:GetComponent(typ)
+        return component
     end 
     return trans
 end
