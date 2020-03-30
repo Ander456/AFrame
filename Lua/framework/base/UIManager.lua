@@ -86,12 +86,21 @@ function M:Hide(view)
     end
     if view then
         view.gameObject.layer = LAYER_NULL
+        self:interactable(view, false)
     end
 end
 
 function M:Show(view)
     if view then
         view.gameObject.layer = LAYER_UI
+        self:interactable(view, true)
+    end
+end
+
+function M:interactable(view, flag)
+    local canvasGroup = view.gameObject:GetComponent(typeof(UE.CanvasGroup))
+    if canvasGroup then
+        canvasGroup.interactable = flag
     end
 end
 
