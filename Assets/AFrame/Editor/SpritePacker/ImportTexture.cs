@@ -42,7 +42,7 @@ public class ImportTexture : AssetPostprocessor
 			platformSetting.overridden = true;
 			platformSetting.compressionQuality = 100;
 			platformSetting.textureCompression = TextureImporterCompression.Compressed;
-			platformSetting.format = TextureImporterFormat.PVRTC_RGBA4;
+			platformSetting.format = TextureImporterFormat.ASTC_RGB_4x4;
 			textureImporter.SetPlatformTextureSettings(platformSetting);
 
 			platformSetting = textureImporter.GetPlatformTextureSettings("Android");
