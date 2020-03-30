@@ -2,6 +2,7 @@ local HTTPManager = CS.BestHTTP.HTTPManager
 local HTTPRequest = CS.BestHTTP.HTTPRequest
 local HTTPResponse = CS.BestHTTP.HTTPResponse
 local HTTPMethods = CS.BestHTTP.HTTPMethods
+local HTTPProxy = CS.BestHTTP.HTTPProxy
 local HTTPRequestStates = CS.BestHTTP.HTTPRequestStates
 local Uri = CS.System.Uri
 local TimeSpan = CS.System.TimeSpan

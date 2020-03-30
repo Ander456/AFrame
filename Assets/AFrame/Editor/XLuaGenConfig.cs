@@ -69,6 +69,7 @@ public static class XLuaGenConfig
 		typeof(BestHTTP.HTTPRequest),
 		typeof(BestHTTP.HTTPResponse),
 		typeof(BestHTTP.HTTPMethods),
+		typeof(BestHTTP.HTTPProxy),
 		typeof(BestHTTP.HTTPRequestStates),
 		typeof(System.TimeSpan),
 		typeof(System.Uri),
