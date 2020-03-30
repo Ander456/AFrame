@@ -41,6 +41,9 @@ end
 function M:Push(...)
     local params = {...}
     local cls = table.remove(params, 1)
+    if not self:isValid(cls) then
+        return
+    end
     self:Load(cls, cls.assetPath, function(view)
         self:Hide(self:Top())
         table.insert(self.stack, view)
@@ -113,6 +116,15 @@ function M:tweenOpen(view)
     end
     view.transform.localScale = UE.Vector3.zero
     view.transform:DOScale(1, 0.3)
+end
+
+function M:isValid(cls)
+    local top = self:Top()
+    if top then
+        return cls.__cname ~= top.class.__cname
+    else
+        return true
+    end
 end
 
 return M
