@@ -9,7 +9,7 @@ lua/framework/net/luaprotobuf_g:138762b8f155242ce80a55d67203483b
 lua/framework/net/tcp_g:ccd0694e8eba431c717fea2180b252a2
 lua/framework/net_g:8f121e0ade1103ddff68ef05bd403355
 lua/framework_g:416227ad5e12f119343e3073da43ac20
-lua_g:c95cf47a29a68560e736bd97e91f6b23
+lua_g:6b832f88cff0cfa713f9ad191c60ff3f
 manifest:0276235b300b6e5e6b74eb75f8104999
 prefabs/cube:ad5859e14eaaf8056b18e109774a89b9
 prefabs/logo:2548cf9f22d4b85889940d6ff0238c8d

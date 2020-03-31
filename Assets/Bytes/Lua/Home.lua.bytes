@@ -14,6 +14,7 @@ function M:Start()
     --- view
     self:OnClick("Root/Button", function()
         print("click Home Button")
+        UIManager:Push(require("Store"))
     end)
 
     self:OnClick("Root/Button2", function()

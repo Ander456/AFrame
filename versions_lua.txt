@@ -13,7 +13,7 @@
 /Users/mio/Downloads/AFrame/Lua/net/luaprotobuf/protoc.lua=132264882350000000
 /Users/mio/Downloads/AFrame/Lua/net/tcp/PacketBuffer.lua=132264892530000000
 /Users/mio/Downloads/AFrame/Lua/net/tcp/TcpClient.lua=132264983720000000
-/Users/Alex/AFrame/Lua/main.lua=132301117530000000
+/Users/Alex/AFrame/Lua/main.lua=132301143690000000
 /Users/Alex/AFrame/Lua/base/ResManager.lua=132269886370000000
 /Users/Alex/AFrame/Lua/base/UIManager.lua=132269886370000000
 /Users/Alex/AFrame/Lua/base/view.lua=132269886370000000
@@ -49,7 +49,7 @@
 /Users/mio/Downloads/AFrame/Lua/framework/core/updater.lua=132285698110000000
 /Users/mio/Downloads/AFrame/Lua/Home.lua=132286457730000000
 /Users/Alex/AFrame/Lua/CubeView.lua=132289864330000000
-/Users/Alex/AFrame/Lua/Home.lua=132301092190000000
+/Users/Alex/AFrame/Lua/Home.lua=132301143890000000
 /Users/Alex/AFrame/Lua/Loading.lua=132301141330000000
 /Users/Alex/AFrame/Lua/framework/init.lua=132301141760000000
 /Users/Alex/AFrame/Lua/framework/base/AudioManager.lua=132273499740000000
