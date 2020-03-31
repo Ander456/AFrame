@@ -48,4 +48,11 @@ function M:SetParent(parent)
     self.gameObject.transform:SetParent(parent, false)
 end
 
+function M:SetInteractable(flag)
+    local canvasGroup = self.gameObject:GetComponent(typeof(UE.CanvasGroup))
+    if canvasGroup and not IsNull(canvasGroup) then
+        canvasGroup.interactable = flag
+    end
+end
+
 return M
