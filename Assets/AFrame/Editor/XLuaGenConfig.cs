@@ -102,6 +102,7 @@ public static class XLuaGenConfig
         typeof(DG.Tweening.TweenExtensions),
         typeof(DG.Tweening.TweenSettingsExtensions),
         typeof(DG.Tweening.ShortcutExtensions),
+		typeof(DG.Tweening.DOTweenModuleUI)
 		
 	};
 

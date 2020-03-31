@@ -68,10 +68,11 @@ end
 function M:TweenOpen()
     local trs = self:Find("Root")
     if trs then
-        local tw = trs:DOScale(1.1, 0.05)
+        local time = 0.1
+        local tw = trs:DOScale(1.1, time)
         tw:SetEase(Tweening.Ease.Linear)
         tw:SetLoops(2, Tweening.LoopType.Yoyo) 
-        tw = trs:DOScale(0.9, 0.05)
+        tw = trs:DOScale(0.9, time)
         tw:SetEase(Tweening.Ease.Linear)
         tw:SetLoops(2, Tweening.LoopType.Yoyo) 
     end
