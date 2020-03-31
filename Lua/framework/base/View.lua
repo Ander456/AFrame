@@ -81,7 +81,7 @@ end
 function M:BlockLayer()
     local block = self:Find("BlockLayer")
     if not block then
-        UIManager:Create(require("BlockLayer"), self.transform)
+        UIManager:Create(require("framework.common.BlockLayer"), self.transform)
     end
 end
 
