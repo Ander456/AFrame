@@ -6,6 +6,8 @@ LuaManager = CS.LuaManager
 
 CSAudioManager = CS.AudioManager
 
+Tweening = CS.DG.Tweening
+
 --- lua ---
 --- core
 require("framework.core.functions")

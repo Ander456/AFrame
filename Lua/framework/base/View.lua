@@ -30,6 +30,9 @@ function M:Find(path, typ)
     else
         trans = self.transform:Find(path)
     end
+    if not trans then
+        return
+    end
     local component
     if typ ~= nil then
         component = trans:GetComponent(typ)
@@ -39,8 +42,15 @@ function M:Find(path, typ)
 end
 
 function M:OnClick(path, func)
-    local btn = self:Find(path)
-    btn:GetComponent("Button").onClick:AddListener(func)
+    local btn, cb
+    if type(path) == "function" then
+        btn = self.gameObject
+        cb = path
+    else
+        btn = self:Find(path)
+        cb = func
+    end
+    btn:GetComponent("Button").onClick:AddListener(cb)
     return btn
 end
 
@@ -52,6 +62,25 @@ function M:SetInteractable(flag)
     local canvasGroup = self.gameObject:GetComponent(typeof(UE.CanvasGroup))
     if canvasGroup and not IsNull(canvasGroup) then
         canvasGroup.interactable = flag
+    end
+end
+
+function M:TweenOpen()
+    local trs = self:Find("Root")
+    if trs then
+        local tw = trs:DOScale(1.1, 0.05)
+        tw:SetEase(Tweening.Ease.Linear)
+        tw:SetLoops(2, Tweening.LoopType.Yoyo) 
+        tw = trs:DOScale(0.9, 0.05)
+        tw:SetEase(Tweening.Ease.Linear)
+        tw:SetLoops(2, Tweening.LoopType.Yoyo) 
+    end
+end
+
+function M:BlockLayer()
+    local block = self:Find("BlockLayer")
+    if not block then
+        UIManager:Create(require("BlockLayer"), self.transform)
     end
 end
 

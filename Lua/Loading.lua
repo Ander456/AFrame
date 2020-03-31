@@ -1,6 +1,6 @@
 local M = class("Loading", View)
 
-M.assetPath = "Assets/Prefabs/UI/Loading.prefab"
+M.ASSET_PATH = "Assets/Prefabs/UI/Loading.prefab"
 
 function M:Awake()
     self.updater = self.gameObject:GetComponent(typeof(CS.XAsset.AssetsUpdate))
@@ -9,7 +9,7 @@ function M:Awake()
     self.updater.progress = handler(self, self.onProgress)
     self.updater.onError = handler(self, self.onError)
 
-    self.slider = self:Find("Slider"):GetComponent(typeof(UE.UI.Slider))
+    self.slider = self:Find("Root/Slider"):GetComponent(typeof(UE.UI.Slider))
     self.slider.gameObject:SetActive(false)
 end
 

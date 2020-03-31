@@ -20,7 +20,7 @@ function M:Load(cls, assetPath, cb)
 end 
 
 function M:LoadSync(cls, assetPath)
-    local a =  Res.LoadSync(cls.assetPath, typeof(GameObject))
+    local a =  Res.LoadSync(cls.ASSET_PATH, typeof(GameObject))
     local prefab = a.asset
     local go  = GameObject.Instantiate(prefab, self.root)  
     go.name = prefab.name   
@@ -32,7 +32,7 @@ end
 function M:PushSync(...)
     local params = {...}
     local cls = table.remove(params, 1)
-    local view = self:LoadSync(cls, cls.assetPath)
+    local view = self:LoadSync(cls, cls.ASSET_PATH)
     table.insert(self.stack, view)
     view:OnOpen(table.unpack(params))
     return view
@@ -44,11 +44,27 @@ function M:Push(...)
     if not self:isValid(cls) then
         return
     end
-    self:Load(cls, cls.assetPath, function(view)
+    self:Load(cls, cls.ASSET_PATH, function(view)
         self:Hide(self:Top())
         table.insert(self.stack, view)
         view:OnOpen(table.unpack(params))
-        self:tweenOpen(view)
+        if view.class.BLOCK ~= -1 then
+            view:BlockLayer()
+        end
+        if view.class.OPEN_ANIM ~= -1 then
+            view:TweenOpen()
+        end
+    end)
+end
+
+function M:Create(cls, parent, params)
+    Res.Load(cls.ASSET_PATH, typeof(GameObject), function(a)
+        local prefab = a.asset
+        local go  = GameObject.Instantiate(prefab, parent)  
+        go.name = prefab.name   
+        local ins = LuaManager.AddLuaComponent(go, cls)
+        ins:OnLoaded(a)
+        ins:OnOpen(table.unpack(params or {}))
     end)
 end
 
@@ -99,14 +115,6 @@ function M:Show(view)
     if view then
         view.gameObject.layer = LAYER_UI
     end
-end
-
-function M:tweenOpen(view)
-    if view.class.openAnim == -1 then
-        return
-    end
-    view.transform.localScale = UE.Vector3.zero
-    view.transform:DOScale(1, 0.3)
 end
 
 function M:isValid(cls)

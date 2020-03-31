@@ -1,7 +1,8 @@
 local M = class("Home", View)
 
-M.assetPath = "Assets/Prefabs/UI/Home.prefab"
-M.openAnim = -1
+M.ASSET_PATH = "Assets/Prefabs/UI/Home.prefab"
+M.OPEN_ANIM = -1
+M.BLOCK = -1
 
 function M:Start()
     --- data 
@@ -11,16 +12,16 @@ function M:Start()
     })
 
     --- view
-    self:OnClick("Button", function()
+    self:OnClick("Root/Button", function()
         print("click Home Button")
     end)
 
-    self:OnClick("Button2", function()
+    self:OnClick("Root/Button2", function()
         print("click Home Button2")
         UIManager:Push(require("Setting"))
     end)
 
-    self.score = self:Find("Score", typeof(UE.UI.Text))
+    self.score = self:Find("Root/Score", typeof(UE.UI.Text))
     DBind.bind(self.score, self.data, "score", function(v, o)
         self.score.text = v
     end)

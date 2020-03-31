@@ -1,9 +1,9 @@
 local M = class("Setting", View)
 
-M.assetPath = "Assets/Prefabs/UI/Setting.prefab"
+M.ASSET_PATH = "Assets/Prefabs/UI/Setting.prefab"
 
 function M:Start()
-    self:OnClick("Button", function()
+    self:OnClick("Root/Button", function()
         print("click Setting Button")
     end)
     self:StartCoroutine(function()
