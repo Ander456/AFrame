@@ -32,9 +32,18 @@ end
 function M:PushSync(...)
     local params = {...}
     local cls = table.remove(params, 1)
+    if not self:isValid(cls) then
+        return
+    end
     local view = self:LoadSync(cls, cls.ASSET_PATH)
     table.insert(self.stack, view)
     view:OnOpen(table.unpack(params))
+    if view.class.BLOCK ~= -1 then
+        view:BlockLayer()
+    end
+    if view.class.OPEN_ANIM ~= -1 then
+        view:TweenOpen()
+    end
     return view
 end
 
