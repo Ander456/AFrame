@@ -171,7 +171,7 @@ namespace XAsset
         }
 
         // ReSharper disable once InconsistentNaming
-        public Action<Asset> completed;
+        public event Action<Asset> completed;
 
         #region IEnumerator implementation
 
