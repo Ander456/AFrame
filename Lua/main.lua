@@ -161,7 +161,7 @@ end
 -- UIManager:Push(require("Home"))
 
 --- test update && reset lua env
--- UIManager:Push(require("Loading"))
+UIManager:Push(require("Loading"))
 
 --- test timer
 local timer = Timer.new()
@@ -189,11 +189,11 @@ table.insert(Schedulers, timer)
 -- end)
 
 --- test auto show hide by layer
-UIManager:Push(require("Home"))
-UIManager:Push(require("Store"))
-UIManager:Push(require("Setting"))
-timer:delay(3, function()
-    -- UIManager:Pop()
-end)
+-- UIManager:Push(require("Home"))
+-- UIManager:Push(require("Store"))
+-- UIManager:Push(require("Setting"))
+-- timer:delay(3, function()
+--     -- UIManager:Pop()
+-- end)
 
 

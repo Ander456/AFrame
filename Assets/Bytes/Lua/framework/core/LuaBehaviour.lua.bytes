@@ -4,55 +4,55 @@
     perform like in c# ps: the c# and lua communcation is expensive if the function useless do not write
 ]]
 
-local LuaBehaviour = class("LuaBehaviour")
+local M = class("LuaBehaviour")
 
 local util = require 'framework.core.util'
 
-function LuaBehaviour:ctor(...)
+function M:ctor(...)
     local comp = ...
     self.cscomp = comp
     self.gameObject = comp.gameObject
     self.transform = comp.transform
 end
 
-function LuaBehaviour:AddComponent(typ)
+function M:AddComponent(typ)
     return self.gameObject:AddComponent(typ)
 end
 
-function LuaBehaviour:GetComponent(typ)
+function M:GetComponent(typ)
     return self.gameObject:GetComponent(typ)
 end
 
-function LuaBehaviour:StartCoroutine(func)
+function M:StartCoroutine(func)
     return self.cscomp:StartCoroutine(util.cs_generator(func))
 end
 
-function LuaBehaviour:StopCoroutine(co)
+function M:StopCoroutine(co)
     self.cscomp:StopCoroutine(co)
 end
 
--- function LuaBehaviour:Awake()
+-- function M:Awake()
 -- end
 
--- function LuaBehaviour:Start()
+-- function M:Start()
 -- end
 
--- function LuaBehaviour:Update()
+-- function M:Update()
 -- end
 
--- function LuaBehaviour:LateUpdate()
+-- function M:LateUpdate()
 -- end
 
--- function LuaBehaviour:FixedUpdate()
+-- function M:FixedUpdate()
 -- end
 
--- function LuaBehaviour:OnEnable()
+-- function M:OnEnable()
 -- end
 
--- function LuaBehaviour:OnDisable()
+-- function M:OnDisable()
 -- end
 
--- function LuaBehaviour:OnDestroy()
+-- function M:OnDestroy()
 -- end
 
-return LuaBehaviour
+return M

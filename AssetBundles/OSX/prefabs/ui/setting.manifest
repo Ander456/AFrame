@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 508492716
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 412aa1963e314593f7fdb085d4e3519e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 230cc1093d420dc9393e9dc7f636ab2a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/UI/Setting.prefab
+Dependencies:
+- /Users/Alex/AFrame/AssetBundles/OSX/atlas/test
+- /Users/Alex/AFrame/AssetBundles/OSX/textures/bg

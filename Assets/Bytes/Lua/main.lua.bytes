@@ -1,14 +1,15 @@
 require("framework.init")
 
-LuaComponents = {}
+print("lua main")
+
+Schedulers = {}
 
 function Update()
-    for key, comp in pairs(LuaComponents) do
-        comp:Update()
+    local dt = UE.Time.deltaTime
+    for index, schedule in ipairs(Schedulers) do
+        schedule:update(dt)
     end
 end
-
-print("lua main")
 
 -- --- test rapidjson
 -- local t = {a=1,b=2,c="33"}
@@ -160,18 +161,39 @@ print("lua main")
 -- UIManager:Push(require("Home"))
 
 --- test update && reset lua env
--- UIManager:Push(require("Loading"))
+UIManager:Push(require("Loading"))
 
---- test pure luacomponent
-env = GameObject.Find("LuaMain"):GetComponent("LuaMain")
-local asset = Assets.LoadAsync("Assets/Prefabs/Cube.prefab", typeof(GameObject))
-asset.completed = function(a)
-    local prefab = a.asset
-    local go  = GameObject.Instantiate(prefab)
-    go.name = prefab.name
-    local c = require("framework.core.LuaComponent").new(go)
-    c:Awake()
-    c:Start()
-end
+--- test timer
+local timer = Timer.new()
+table.insert(Schedulers, timer)
+-- UIManager:Push(require("Home"))
+-- local id = timer:schedule(1, function()
+--     print("haha")
+-- end)
+-- timer:delay(5, function()
+--     print("delay")
+--     timer:unschedule(id)
+-- end)
+
+--- test change layer to hide ui
+-- local flag = false
+-- timer:schedule(3, function()
+--     local v = UIManager:Top()
+--     if flag then
+--         v.gameObject.layer = 5
+--         flag = false
+--     else
+--         v.gameObject.layer = 3
+--         flag = true
+--     end
+-- end)
+
+--- test auto show hide by layer
+-- UIManager:Push(require("Home"))
+-- UIManager:Push(require("Store"))
+-- UIManager:Push(require("Setting"))
+-- timer:delay(3, function()
+--     -- UIManager:Pop()
+-- end)
 
 

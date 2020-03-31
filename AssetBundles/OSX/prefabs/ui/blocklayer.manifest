@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 3018342680
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c2eda6c33e9d94e5c8cfdb060327f8a8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9f7c93079d7f7af0b38874451b38cead
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/UI/BlockLayer.prefab
+Dependencies: []

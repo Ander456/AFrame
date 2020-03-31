@@ -540,7 +540,9 @@ function string.formatnumberthousands(num)
     return formatted
 end
 
-
+function IsNull(obj)
+	return (obj == nil or obj:IsNull())
+end 
 
 
 

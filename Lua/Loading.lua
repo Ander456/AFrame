@@ -1,6 +1,8 @@
 local M = class("Loading", View)
 
 M.ASSET_PATH = "Assets/Prefabs/UI/Loading.prefab"
+M.OPEN_ANIM = -1
+M.BLOCK = -1
 
 function M:Awake()
     self.updater = self.gameObject:GetComponent(typeof(CS.XAsset.AssetsUpdate))
@@ -21,10 +23,15 @@ function M:onCompleted()
     print("Assets update complete .")
     self:StartCoroutine(function()
         coroutine.yield(CS.UnityEngine.WaitForSeconds(1))
-        local lm = GameObject.Find("LuaMain"):GetComponent(typeof(CS.LuaMain))
-        local t = {"Scenes/Start", "Scenes/Home"}
-        lm:ResetLuaAndLoadScene(t[math.random(1, 2)])
+        LuaManager.Clear()
+        for key, value in pairs(package.loaded) do
+            if string.find(key, 'framework') == 1 then
+                package.loaded[key] = nil
+            end
+        end
+        require("framework.init")
         UIManager:PushSync(require("Home"))
+        self:Close()
     end)
 end
 

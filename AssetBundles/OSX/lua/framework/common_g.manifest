@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3226007449
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 27fde14fc8a7b255651eda0a7657b39a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bytes/Lua/framework/common/BlockLayer.lua.bytes
+Dependencies: []
