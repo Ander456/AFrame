@@ -17,26 +17,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ]]
 
-function printLog(tag, fmt, ...)
-    local t = {
-        "[",
-        string.upper(tostring(tag)),
-        "] ",
-        string.format(tostring(fmt), ...)
-    }
-    print(table.concat(t))
-end
-
-function printError(fmt, ...)
-    printLog("ERR", fmt, ...)
-    print(debug.traceback("", 2))
-end
-
-function printInfo(fmt, ...)
-    if type(DEBUG) ~= "number" or DEBUG < 2 then return end
-    printLog("INFO", fmt, ...)
-end
-
 local function dump_value_(v)
     if type(v) == "string" then
         v = "\"" .. v .. "\""
@@ -183,36 +163,58 @@ function class(classname, super)
         self.class = cls
         return self
     end
+    cls.isa = function(self, klass)
+        local m = getmetatable(self)
+        while m do 
+            if m == klass then return true end
+            m = m.super
+        end
+        return false
+    end
     return cls
 end
 
-function import(moduleName, currentModuleName)
-    local currentModuleNameParts
-    local moduleFullName = moduleName
-    local offset = 1
-
-    while true do
-        if string.byte(moduleName, offset) ~= 46 then -- .
-            moduleFullName = string.sub(moduleName, offset)
-            if currentModuleNameParts and #currentModuleNameParts > 0 then
-                moduleFullName = table.concat(currentModuleNameParts, ".") .. "." .. moduleFullName
-            end
-            break
+function Class(base, _ctor)
+    local c = {}    -- a new class instance
+    if not _ctor and type(base) == 'function' then
+        _ctor = base
+        base = nil
+    elseif type(base) == 'table' then
+    -- our new class is a shallow copy of the base class!
+        for i,v in pairs(base) do
+            c[i] = v
         end
-        offset = offset + 1
-
-        if not currentModuleNameParts then
-            if not currentModuleName then
-                local n,v = debug.getlocal(3, 1)
-                currentModuleName = v
-            end
-
-            currentModuleNameParts = string.split(currentModuleName, ".")
-        end
-        table.remove(currentModuleNameParts, #currentModuleNameParts)
+        c._base = base
     end
+    
+    -- the class will be the metatable for all its objects,
+    -- and they will look up their methods in it.
+    c.__index = c
 
-    return require(moduleFullName)
+    -- expose a constructor which can be called by <classname>(<args>)
+    local mt = {}
+    
+    mt.__call = function(class_tbl, ...)
+        local obj = {}
+        setmetatable(obj, c)
+	
+        if _ctor then
+            _ctor(obj, ...)
+        end
+        return obj
+    end    
+        
+    c._ctor = _ctor
+    c.is_a = function(self, klass)
+        local m = getmetatable(self)
+        while m do 
+            if m == klass then return true end
+            m = m._base
+        end
+        return false
+    end
+    setmetatable(c, mt)
+    return c
 end
 
 function handler(obj, method)

@@ -50,7 +50,7 @@ public class LuaMain : MonoBehaviour
 		LuaManager.luaEnv.Global.Get("Update", out _updateFunc);
 		LuaManager.luaEnv.Global.Get("LateUpdate", out _lateUpdateFunc);
 		LuaManager.luaEnv.Global.Get("FixedUpdate", out _fixedUpdateFunc);
-		Debug.Log ("LuaMian OnInited");
+		Debug.Log ("LuaMain OnInited");
 	}
 
 	void FixedUpdate()

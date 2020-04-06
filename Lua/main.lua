@@ -4,10 +4,19 @@ print("lua main")
 
 Schedulers = {}
 
+SGMgr = {}
+BrainMgr = {}
+
 function Update()
     local dt = UE.Time.deltaTime
     for index, schedule in ipairs(Schedulers) do
         schedule:update(dt)
+    end
+    for index, sg in ipairs(SGMgr) do
+        sg:Update()
+    end
+    for index, brain in ipairs(BrainMgr) do
+        brain:Update()
     end
 end
 
@@ -189,11 +198,26 @@ table.insert(Schedulers, timer)
 -- end)
 
 --- test auto show hide by layer && open anim
-UIManager:Push(require("Home"))
-UIManager:Push(require("Store"))
-UIManager:Push(require("Setting"))
+-- UIManager:Push(require("Home"))
+-- UIManager:Push(require("Store"))
+-- UIManager:Push(require("Setting"))
+-- timer:delay(3, function()
+--     -- UIManager:Pop()
+-- end)
+
+
+--- test ai
+require("AI.init")
+local entity = {
+    name = "test entity",
+}
+local sg = StateGraphInstance(require("AI.SGBird"), entity)
+entity.sg = sg
+sg:GoToState(sg.sg.defaultstate)
+table.insert(SGMgr, sg)
 timer:delay(3, function()
-    -- UIManager:Pop()
+    local event = sg.sg.events["attacked"]
+    if event ~= nil then
+        event.fn(sg.inst, {})
+    end
 end)
-
-
