@@ -59,7 +59,8 @@ local states =
         
         timeline = 
         {
-            TimeEvent(2, function(inst) print("remove self") end)
+            -- fsp 60 so 2 * 1/60 is 2 frames length
+            TimeEvent(2 * 1/60, function(inst) print("remove self") end)
         }
     },
 
