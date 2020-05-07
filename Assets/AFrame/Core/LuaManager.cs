@@ -7,9 +7,9 @@ using XLua;
 [LuaCallCSharp]
 public class LuaManager
 {
-	public static LuaEnv luaEnv;
+    public static LuaEnv luaEnv;
     private static Dictionary<string, Asset> assets = new Dictionary<string, Asset>();
-	private delegate LuaTable LuaCtor(LuaBehaviour comp);
+    private delegate LuaTable LuaCtor(LuaBehaviour comp);
 
     public static void Init(Action succes)
     {
@@ -52,6 +52,7 @@ public class LuaManager
 		luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
 		luaEnv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
 		luaEnv.AddBuildin("xsocket", XLua.LuaDLL.Lua.LoadXSocket);
+		luaEnv.AddBuildin("yasio", XLua.LuaDLL.Lua.LoadYasio);
         luaEnv.DoString("require 'main'");
         if (cb != null)
         {

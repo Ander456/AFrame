@@ -63,6 +63,34 @@ list(APPEND THIRDPART_INC  lua-rapidjson/include)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
 #end lua-rapidjson
 
+#begin yasio
+set (YASIO_SRC
+    yasio/ibstream.cpp
+    yasio/obstream.cpp
+    yasio/xxsocket.cpp
+    yasio/yasio.cpp
+    yasio/bindings/lyasio.cpp
+    yasio/bindings/yasio_ni.cpp
+)
+
+if (ANDROID)
+    if (NOT THIRDPART_LIB)
+        set(THIRDPART_LIB "-llog")
+    else()
+        set(THIRDPART_LIB "${THIRDPART_LIB} -llog")
+    endif()
+endif()
+
+set_property(
+    SOURCE ${YASIO_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC yasio)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${YASIO_SRC})
+#end yasio
+
 #begin xsocket
 set (XSOCKET_SRC 
     xsocket/olua/olua.c
@@ -243,7 +271,7 @@ macro(source_group_by_dir proj_dir source_files)
     if(MSVC OR APPLE)
         get_filename_component(sgbd_cur_dir ${proj_dir} ABSOLUTE)
         foreach(sgbd_file ${${source_files}})
-			get_filename_component(sgbd_abs_file ${sgbd_file} ABSOLUTE)
+			      get_filename_component(sgbd_abs_file ${sgbd_file} ABSOLUTE)
             file(RELATIVE_PATH sgbd_fpath ${sgbd_cur_dir} ${sgbd_abs_file})
             string(REGEX REPLACE "\(.*\)/.*" \\1 sgbd_group_name ${sgbd_fpath})
             string(COMPARE EQUAL ${sgbd_fpath} ${sgbd_group_name} sgbd_nogroup)

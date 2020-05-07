@@ -18,6 +18,9 @@ function Update()
     for index, brain in ipairs(BrainMgr) do
         brain:Update()
     end
+    if yasio_update then
+      yasio_update(dt)
+    end
 end
 
 -- --- test rapidjson
@@ -207,17 +210,19 @@ table.insert(Schedulers, timer)
 
 
 --- test ai
-require("AI.init")
-local entity = {
-    name = "test entity",
-}
-local sg = StateGraphInstance(require("AI.SGBird"), entity)
-entity.sg = sg
-sg:GoToState(sg.sg.defaultstate)
-table.insert(SGMgr, sg)
-timer:delay(3, function()
-    local event = sg.sg.events["attacked"]
-    if event ~= nil then
-        event.fn(sg.inst, {})
-    end
-end)
+--require("AI.init")
+--local entity = {
+--    name = "test entity",
+--}
+--local sg = StateGraphInstance(require("AI.SGBird"), entity)
+--entity.sg = sg
+--sg:GoToState(sg.sg.defaultstate)
+--table.insert(SGMgr, sg)
+--timer:delay(3, function()
+--    local event = sg.sg.events["attacked"]
+--    if event ~= nil then
+--        event.fn(sg.inst, {})
+--    end
+--end)
+yasio = require("yasio")
+require("example")

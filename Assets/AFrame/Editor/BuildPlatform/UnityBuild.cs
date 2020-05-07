@@ -48,7 +48,7 @@ public class UnityBuild
 		BuildPlayerOptions playerOptions = new BuildPlayerOptions {
 			scenes = EnabledScenePaths,
 			locationPathName = Path.Combine(Application.dataPath.Replace("Assets",""), "Publish/MacOS"),
-			target = BuildTarget.StandaloneOSXUniversal
+			target = BuildTarget.StandaloneOSX
 		};
 		BuildPipeline.BuildPlayer(playerOptions);
 	}
