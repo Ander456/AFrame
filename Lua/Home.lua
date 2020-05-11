@@ -31,6 +31,7 @@ function M:Start()
         while true do
             coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
             self.data.score = math.random(100, 1000)
+            -- xutil.print_func_ref_by_csharp()
         end
     end)
 end

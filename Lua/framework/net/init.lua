@@ -1,5 +1,5 @@
 --- buidin 3rd lib
-json = require("rapidjson")
+json = require("cjson")
 pb = require("pb")
 
 --- http

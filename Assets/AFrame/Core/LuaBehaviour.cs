@@ -71,6 +71,7 @@ public class LuaBehaviour : MonoBehaviour
 		luaLateUpdate = null;
 
 		luaTable.Dispose();
+    Debug.Log("sssssJkA");
 	}
 
 	void OnEnable()

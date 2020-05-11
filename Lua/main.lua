@@ -1,5 +1,7 @@
 require("framework.init")
 
+xutil = require("framework.core.util")
+
 print("lua main")
 
 Schedulers = {}
@@ -7,6 +9,9 @@ Schedulers = {}
 SGMgr = {}
 BrainMgr = {}
 
+function _reflog()
+    xutil.print_func_ref_by_csharp()
+end
 function Update()
     local dt = UE.Time.deltaTime
     for index, schedule in ipairs(Schedulers) do
@@ -23,7 +28,7 @@ function Update()
     end
 end
 
--- --- test rapidjson
+-- --- test cjson
 -- local t = {a=1,b=2,c="33"}
 -- print(json.encode(t))
 
@@ -59,14 +64,6 @@ end
 -- print(pb.tohex(bytes))
 -- local data2 = assert(pb.decode("Person", bytes))
 -- dump(data2)
-
--- --- test xsocket
--- local socket = require("xsocket")
--- local s = socket.new()
--- s:connect("127.0.0.1", 9999)
--- local stringPack = string.pack("<i8", 1234)
--- s:writeBytes(stringPack .."\n")
--- s:flush()
 
 -- --- test class
 -- local person = class("person")
@@ -201,11 +198,11 @@ table.insert(Schedulers, timer)
 -- end)
 
 --- test auto show hide by layer && open anim
--- UIManager:Push(require("Home"))
+UIManager:Push(require("Home"))
 -- UIManager:Push(require("Store"))
 -- UIManager:Push(require("Setting"))
 -- timer:delay(3, function()
---     -- UIManager:Pop()
+    -- UIManager:Pop()
 -- end)
 
 
@@ -224,5 +221,4 @@ table.insert(Schedulers, timer)
 --        event.fn(sg.inst, {})
 --    end
 --end)
-yasio = require("yasio")
 require("example")

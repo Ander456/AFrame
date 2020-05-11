@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIRoot : MonoBehaviour {
 
-	void Awake () {
-		DontDestroyOnLoad(gameObject);
-	}
+    void Awake () {
+        DontDestroyOnLoad(gameObject);
+    }
 }
