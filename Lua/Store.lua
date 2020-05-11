@@ -2,7 +2,7 @@ local M = class("Store", View)
 
 M.ASSET_PATH = "Assets/Prefabs/UI/Store.prefab"
 
-function M:Start()
+function M:OnOpen()
     self:OnClick("Root/Button", function()
         print("click Store Button")
         UIManager:Push(require("Setting"))

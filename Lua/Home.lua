@@ -4,7 +4,7 @@ M.ASSET_PATH = "Assets/Prefabs/UI/Home.prefab"
 M.OPEN_ANIM = -1
 M.BLOCK = -1
 
-function M:Start()
+function M:OnOpen()
     --- data 
     self.data = DBind.ob({
         score = 100,
